@@ -18,5 +18,12 @@ module.exports = {
     }
   },
 
-  seedDB: true
+  seedDB: true,
+
+  mysql: {
+    host     : 'localhost',
+    port     : '3306',
+    user     : 'pruebas',
+    password : 'pruebas'
+  }
 };

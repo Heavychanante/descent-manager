@@ -8,13 +8,17 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
+var passport = require('passport');
 var config = require('./config/environment');
+
+// Setup passport
+require('./config/passport')(passport);
 
 // Setup server
 var app = express();
 var server = require('http').createServer(app);
-require('./config/express')(app);
-require('./routes')(app);
+require('./config/express')(app, passport);
+require('./routes')(app, passport);
 
 // Start server
 function startServer() {

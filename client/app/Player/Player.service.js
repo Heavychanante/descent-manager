@@ -7,7 +7,7 @@ angular.module('descentManagerApp')
   		list : function() {
   			return $http({
   				method: "GET",
-  				url: 'http://localhost:8080/DescentManager/jugadores'
+  				url: '/api/players'
   			})
   		},
   		// Método que obtiene las habilidades de un jugador

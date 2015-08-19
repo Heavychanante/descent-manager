@@ -2,7 +2,7 @@
 
 var path = require('path');
 var _ = require('lodash');
-
+console.log(process.env.NODE_ENV);
 function requiredProcessEnv(name) {
   if (!process.env[name]) {
     throw new Error('You must set the ' + name + ' environment variable');
@@ -42,6 +42,11 @@ var all = {
         safe: true
       }
     }
+  },
+
+  // Mysql connection options
+  mysql: {
+    database : 'descentmanager'
   }
 };
 

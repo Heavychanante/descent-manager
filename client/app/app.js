@@ -18,21 +18,23 @@ angular.module('descentManagerApp', [
   // Comprobará si el usuario está logeado y si no es así redirigirá a la página de login
   .run(function($rootScope, $http, $state) {
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
-      $http.get("/loggedin")
-        .then(function(response){
-          $rootScope.loginErrorMessage = null;
+      if (toState.url != "/register" && toState.url != "/login") {
+        $http.get("/loggedin")
+          .then(function(response){
+            $rootScope.loginErrorMessage = null;
 
-          // Usuario autenticado
-          if (response.data !== '0') {
-            $rootScope.currentUser = response.data;
-          } else {
-            // Ususario no autenticado
-            $rootScope.loginErrorMessage = "Debes hacer login";
-            event.preventDefault();
-            $state.go("login");
-          }
-        }, function(response){
-          console.error(response.status);
-        });
+            // Usuario autenticado
+            if (response.data !== '0') {
+              $rootScope.currentUser = response.data;
+            } else {
+              // Ususario no autenticado
+              $rootScope.loginErrorMessage = "Debes hacer login";
+              event.preventDefault();
+              $state.go("login");
+            }
+          }, function(response){
+            console.error(response.status);
+          });
+      }
     })
   });

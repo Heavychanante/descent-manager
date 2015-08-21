@@ -1,0 +1,25 @@
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Descent Manager</h1>
+    <p class="lead">The ultimate online application to manage your Descent games</p>
+  </div>
+</header>
+
+<div class="container">
+  <form class="form-signin">
+    <div class="alert" role="alert" ng-class="alertClass" ng-show="alert">{{alertMessage}}</div>
+    <h2 class="form-signin-heading">Please register</h2>
+    <label for="inputName" class="sr-only">Name</label>
+    <input type="text" id="inputName" ng-model="registration.name" class="form-control" placeholder="Name" required autofocus>
+    <label for="inputUsername" class="sr-only">Username</label>
+    <input type="text" id="inputUsername" ng-model="registration.username" class="form-control" placeholder="Username" required>
+    <label for="inputPassword1" class="sr-only">Password</label>
+    <input type="password" id="inputPassword1" ng-model="registration.password1" class="form-control" placeholder="Password" required>
+    <label for="inputPassword2" class="sr-only">Retype password</label>
+    <input type="password" id="inputPassword2" ng-model="registration.password2" class="form-control" placeholder="Retype password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="register(registration)">Register</button>
+    <a href="#" class="register" ng-click="login()">Login here</a>
+  </form>
+</div>
+
+<footer></footer>

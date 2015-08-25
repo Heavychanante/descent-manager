@@ -9,6 +9,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('express');
 var passport = require('passport');
+var sqldb = require('./sqldb');
 var config = require('./config/environment');
 
 // Setup passport
@@ -27,7 +28,13 @@ function startServer() {
   });
 }
 
-setImmediate(startServer);
+sqldb.sequelize.sync()
+  .then(startServer)
+  .catch(function(err) {
+    console.log('Server failed to start due to error: %s', err);
+  });
+
+//setImmediate(startServer);
 
 // Expose app
 exports = module.exports = app;

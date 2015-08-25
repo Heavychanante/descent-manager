@@ -1,11 +1,11 @@
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" ng-repeat="jugador in jugadores" ng-class="{active: $index == selectedTab}" ng-click="setSelected($index)">
-						<a ng-href="#jugador{{jugador.id}}" aria-controls="#jugador{{jugador.id}}" role="tab" data-toggle="tab" ng-bind="jugador.usuario.alias"></a>
+						<a ng-href="#jugador{{jugador.id}}" aria-controls="#jugador{{jugador.id}}" role="tab" data-toggle="tab" ng-bind="jugador.Usuario.alias"></a>
 					</li>
 				</ul>
 
 				<div class="tab-content">
-					<div role="tabpanel" class="tab-pane" ng-class="{active: $index == selectedTab}" ng-attr-id="#jugador{{jugador.id}}" ng-repeat="jugador in jugadores" ng-init="getHabilidadesAndObjetos(jugador)">
+					<div role="tabpanel" class="tab-pane" ng-class="{active: $index == selectedTab}" ng-attr-id="#jugador{{jugador.id}}" ng-repeat="jugador in jugadores">
 						<h2 class="sub-header">
 							Información
 							<button type="button" class="btn btn-default pull-right" ng-click="updateJugador(jugador);">Guardar</button>
@@ -18,7 +18,7 @@
 										<label style="text-align: left; padding-left: 15px">Nombre:</label>
 									</div>
 									<div class="col-md-6">
-										<span ng-bind="jugador.personaje.nombre"/>
+										<span ng-bind="jugador.Personaje.nombre"/>
 									</div>
 								</div>
 							</dl>
@@ -28,7 +28,7 @@
 										<label style="text-align: left; padding-left: 15px">Clase:</label>
 									</div>
 									<div class="col-md-5">
-										<span ng-bind="jugador.clase.nombre"/>
+										<span ng-bind="jugador.Clase.nombre"/>
 									</div>
 								</div>
 							</dl>
@@ -38,7 +38,7 @@
 										<label style="text-align: left; padding-left: 15px">Velocidad:</label>
 									</div>
 									<div class="col-md-5">
-										<span ng-bind="jugador.personaje.velocidad"/>
+										<span ng-bind="jugador.Personaje.velocidad"/>
 									</div>
 								</div>
 							</dl>
@@ -48,7 +48,7 @@
 										<label style="text-align: left; padding-left: 15px">Vida:</label>
 									</div>
 									<div class="col-md-7">
-										<span ng-bind="jugador.personaje.vida"/>
+										<span ng-bind="jugador.Personaje.vida"/>
 									</div>
 								</div>
 							</dl>
@@ -58,7 +58,7 @@
 										<label style="text-align: left; padding-left: 15px">Aguante:</label>
 									</div>
 									<div class="col-md-6">
-										<span ng-bind="jugador.personaje.aguante"/>
+										<span ng-bind="jugador.Personaje.aguante"/>
 									</div>
 								</div>
 							</dl>
@@ -68,7 +68,7 @@
 										<label style="text-align: left; padding-left: 15px">Defensa:</label>
 									</div>
 									<div class="col-md-6">
-										<span ng-bind="jugador.personaje.defensa"/>
+										<span ng-bind="jugador.Personaje.defensa"/>
 									</div>
 								</div>
 							</dl>
@@ -81,7 +81,7 @@
 										<label style="text-align: left; padding-left: 15px">Fuerza:</label>
 									</div>
 									<div class="col-md-8">
-										<span ng-bind="jugador.personaje.fuerza"/>
+										<span ng-bind="jugador.Personaje.fuerza"/>
 									</div>
 								</div>
 							</dl>
@@ -91,7 +91,7 @@
 										<label style="text-align: left; padding-left: 15px">Conocimiento:</label>
 									</div>
 									<div class="col-md-6">
-										<span ng-bind="jugador.personaje.conocimiento"/>
+										<span ng-bind="jugador.Personaje.conocimiento"/>
 									</div>
 								</div>
 							</dl>
@@ -101,7 +101,7 @@
 										<label style="text-align: left; padding-left: 15px">Voluntad:</label>
 									</div>
 									<div class="col-md-8">
-										<span ng-bind="jugador.personaje.voluntad"/>
+										<span ng-bind="jugador.Personaje.voluntad"/>
 									</div>
 								</div>
 							</dl>
@@ -111,7 +111,7 @@
 										<label style="text-align: left; padding-left: 15px">Percepción:</label>
 									</div>
 									<div class="col-md-7">
-										<span ng-bind="jugador.personaje.percepcion"/>
+										<span ng-bind="jugador.Personaje.percepcion"/>
 									</div>
 								</div>
 							</dl>
@@ -119,14 +119,14 @@
 								<label style="text-align: left; padding-left: 15px">Capacidad</label>
 								<span class="glyphicon glyphicon-info-sign" aria-hidden="true"
 									data-toggle="tooltip" data-placement="right"
-									title="{{jugador.personaje.capacidad}}">
+									title="{{jugador.Personaje.capacidad}}">
 								</span>
 							</dl>
 							<dl class="col-sm-2 col-md-2">
 								<label style="text-align: left; padding-left: 15px">Proeza</label>
 								<span class="glyphicon glyphicon-info-sign" aria-hidden="true"
 									data-toggle="tooltip" data-placement="right"
-									title="{{jugador.personaje.proeza}}">
+									title="{{jugador.Personaje.proeza}}">
 								</span>
 							</dl>
 						</div>
@@ -206,11 +206,11 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="habilidad in jugador.habilidadesJugador" ng-init="getCantidadHabilidad(jugador, habilidad)">
+									<tr ng-repeat="habilidad in jugador.Habilidads">
 										<td ng-bind="habilidad.nombre"></td>
 										<td ng-bind="habilidad.penalizacion"></td>
-										<td ng-bind="habilidad.costeExperiencia"></td>
-										<td ng-bind="habilidad.cantidad"></td>
+										<td ng-bind="habilidad.coste_experiencia"></td>
+										<td ng-bind="habilidad.JugadorHabilidad.cantidad"></td>
 										<td ng-bind="habilidad.descripcion"></td>
 									</tr>
 								</tbody>
@@ -232,12 +232,12 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr ng-repeat="objeto in jugador.objetosJugador">
+									<tr ng-repeat="objeto in jugador.Objetos">
 										<td ng-bind='objeto.nombre'></td>
 										<td ng-bind='objeto.tipo'></td>
 										<td ng-bind='objeto.precio'></td>
 										<td ng-bind='objeto.manos'></td>
-										<td ng-bind='objeto.aDistancia'></td>
+										<td ng-bind='objeto.a_distancia | numberToBoolean'></td>
 										<td ng-bind='objeto.descripcion'></td>
 									</tr>
 								</tbody>

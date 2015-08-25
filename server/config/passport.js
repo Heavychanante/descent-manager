@@ -1,6 +1,10 @@
 var config = require('./environment');
 var LocalStrategy = require('passport-local').Strategy;
 var mysql = require('mysql');
+var sqldb = require('../sqldb');
+
+// Database models
+var Usuario = sqldb.Usuario;
 
 // Connection to database
 var connection = mysql.createConnection(config.mysql);
@@ -20,9 +24,12 @@ module.exports = function(passport) {
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
-        connection.query("SELECT * FROM usuario WHERE id = ? ",[id], function(err, rows){
-            done(err, rows[0]);
-        });
+        Usuario.find({where: {id: id}})
+          .then(function(usuario){
+            done(null, usuario);
+          }, function(error){
+            done(error, null);
+          });
     });
 
     // =========================================================================
@@ -73,22 +80,20 @@ module.exports = function(passport) {
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) { // callback with email and password from our form
-            connection.query("SELECT * FROM usuario WHERE alias = ?",[username], function(err, rows){
-                if (err) {
-                    return done(err);
-                }
-                if (!rows.length) {
+            Usuario.findOne({ where: {alias: username} })
+              .then(function(usuario) {
+                if (!usuario) {
                     return done(null, false, {message : 'Usuario no encontrado'});
                 }
-
                 // if the user is found but the password is wrong
-                if (password != rows[0].password) {
+                if (password != usuario.password) {
                     return done(null, false, {message : 'La contraseña es incorrecta'});
                 }
-
                 // all is well, return successful user
-                return done(null, rows[0]);
-            });
+                return done(null, usuario);
+              }, function(error){
+                return done(error);
+              });
         })
     );
 };

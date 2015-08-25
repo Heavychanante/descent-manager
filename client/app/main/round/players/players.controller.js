@@ -8,6 +8,7 @@ angular.module('descentManagerApp')
   		Player.list().
   			then(function(response) {
   				$scope.jugadores = response.data;
+          console.log($scope.jugadores);
   			}, function(response) {
   				console.error('Error llamando a Player.list(): ' + response.data + ' (' + response.status + ')');
   			});
@@ -67,7 +68,7 @@ angular.module('descentManagerApp')
 
   	// Se actualizan los campos del jugador
   	$scope.updateJugador = function (jugador) {
-  		Player.update(jugador).
+  		Player.save(jugador).
   			then(function(response) {
   				console.log('Jugador ' + jugador.usuario.alias + ' actualizado: ' + response.status);
   			}, function(response) {

@@ -8,10 +8,9 @@ module.exports = {
     uri: 'mongodb://localhost/descentmanager-dev'
   },
   sequelize: {
-    uri: 'sqlite://',
+    uri: 'mysql://pruebas:pruebas@localhost:3306/descentmanager',
     options: {
       logging: false,
-      storage: 'dev.sqlite',
       define: {
         timestamps: false
       }

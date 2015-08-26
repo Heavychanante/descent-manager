@@ -1,13 +1,9 @@
-var config = require('./environment');
 var LocalStrategy = require('passport-local').Strategy;
-var mysql = require('mysql');
 var sqldb = require('../sqldb');
+var encryption = require('./encryption.js');
 
 // Database models
 var Usuario = sqldb.Usuario;
-
-// Connection to database
-var connection = mysql.createConnection(config.mysql);
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
@@ -46,23 +42,25 @@ module.exports = function(passport) {
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) {
-            connection.query("SELECT * FROM usuario WHERE alias = ?",[username], function(err, rows) {
-                if (err) {
-                  return done(err);
+            Usuario.findOne({ where: {alias: username} })
+              .then(function(usuario) {
+                // If user is found
+                if (usuario) {
+                    return done(null, false, {message : 'El usuario ya existe'});
                 }
-                if (rows.length) {
-                    return done(null, false, {message : 'El nombre de usuario ya existe'});
-                } else {
-                    // If there is no user with that username
-                    // create the user
-                    var insertQuery = "INSERT INTO usuario (nombre, alias, password, creacion, modificacion) values ('prueba',?,?,NOW(),NOW())";
-
-                    // Send the new user Id
-                    connection.query(insertQuery,[username, password],function(err, result) {
-                        return done(null, result.insertId);
-                    });
-                }
-            });
+                // All is well, return new user
+                Usuario.create({
+                    nombre: req.body.name,
+                    alias: username,
+                    password: encryption.encrypt(password)
+                  }).then(function(usuario){
+                    return done(null, usuario);
+                  }, function(error){
+                    return done(error);
+                  });
+              }, function(error){
+                return done(error);
+              });
         })
     );
 
@@ -86,7 +84,7 @@ module.exports = function(passport) {
                     return done(null, false, {message : 'Usuario no encontrado'});
                 }
                 // if the user is found but the password is wrong
-                if (password != usuario.password) {
+                if (password !== encryption.decrypt(usuario.password)) {
                     return done(null, false, {message : 'La contraseña es incorrecta'});
                 }
                 // all is well, return successful user

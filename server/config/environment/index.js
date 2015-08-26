@@ -32,6 +32,9 @@ var all = {
     session: 'descent-manager-secret'
   },
 
+  // Encryption algorithm
+  algorithm: 'aes-256-ctr',
+
   // List of user roles
   userRoles: ['guest', 'user', 'admin'],
 

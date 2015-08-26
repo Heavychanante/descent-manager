@@ -22,8 +22,13 @@ module.exports = function(app, passport) {
    .get(errors[404]);
 
   //------------------------ LOGIN ROUTES ------------------------------//
-  // realiza el login en la aplicación
+  // Realiza el login en la aplicación
   app.post("/login", passport.authenticate("local-login"), function(req, res){
+    res.json(req.user);
+  });
+
+  // Realiza el registro en la aplicación
+  app.post("/register", passport.authenticate("local-signup"), function(req, res){
     res.json(req.user);
   });
 

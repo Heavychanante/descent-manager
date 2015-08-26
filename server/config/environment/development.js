@@ -24,5 +24,9 @@ module.exports = {
     port     : '3306',
     user     : 'pruebas',
     password : 'pruebas'
+  },
+
+  secrets: {
+    encryptionPassword: "encryptdev"
   }
 };

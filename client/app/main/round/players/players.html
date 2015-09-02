@@ -194,6 +194,7 @@
 
 						<h2 class="sub-header">Habilidades</h2>
 
+
 						<div class="table-responsive">
 							<table class="table table-striped table-bordered text-center">
 								<thead>
@@ -210,12 +211,16 @@
 										<td ng-bind="habilidad.nombre"></td>
 										<td ng-bind="habilidad.penalizacion"></td>
 										<td ng-bind="habilidad.coste_experiencia"></td>
-										<td ng-bind="habilidad.JugadorHabilidad.cantidad"></td>
+										<td ng-bind="habilidad | getCantidad"></td>
 										<td ng-bind="habilidad.descripcion"></td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
+
+						<button type="button" class="btn btn-default btn-md pull-right" ng-click="openSkillModal(jugador)">
+							<span class="glyphicon glyphicon-plus" aria-hidden="true" title="Añadir habilidad"></span>
+						</button>
 
 						<h2 class="sub-header">Objetos</h2>
 

@@ -1,14 +1,12 @@
 'use strict';
 
 angular.module('descentManagerApp')
-  .controller('PlayersCtrl', ['$scope', 'Player', function($scope, Player) {
-
+  .controller('PlayersCtrl', ['$scope', '$modal', 'Player', 'uiGridConstants', '$q', function($scope, $modal, Player, uiGridConstants, $q) {
     $scope.init = function() {
   		$scope.selectedTab = 0;
   		Player.list().
   			then(function(response) {
   				$scope.jugadores = response.data;
-          console.log($scope.jugadores);
   			}, function(response) {
   				console.error('Error llamando a Player.list(): ' + response.data + ' (' + response.status + ')');
   			});
@@ -18,61 +16,58 @@ angular.module('descentManagerApp')
   		$scope.selectedTab = index;
   	};
 
-  	$scope.getHabilidadesAndObjetos = function(jugador) {
-  		Player.getHabilidades(jugador.id).
-  			then(function(response) {
-  				jugador.habilidadesJugador = response.data;
-  			}, function(response) {
-  				console.error('Error llamando a Player.getHabilidades(): ' + response.data + ' (' + response.status + ')');
-  			});
+    $scope.openSkillModal = function(jugador) {
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'app/main/round/players/modal/addSkillModal/addSkillModal.html',
+        controller: 'AddSkillModalCtrl',
+        size: 'lg',
+        resolve: {
+          jugador: function () {
+            return jugador;
+          }
+        }
+      });
 
-  		Player.getObjetos(jugador.id).
-  			then(function(response) {
-  				jugador.objetosJugador = response.data;
-  			}, function(response) {
-  				console.error('Error llamando a Player.getObjetos(): ' + response.data + ' (' + response.status + ')');
-  			});
-  	};
 
-  	$scope.getCantidadHabilidad = function(jugador, habilidad) {
-  		Player.getCantidadHabilidad(jugador.id, habilidad.id).
-  			then(function(response) {
-  				habilidad.cantidad = response.data.cantidad;
-  			}, function(response) {
-  				console.error('Error llamando a Player.getCantidadHabilidad(): ' + response.data + ' (' + response.status + ')');
-  			});
-  	};
+      modalInstance.result.then(function (newSkills) {
+        var promises = new Array();
 
-  	// Se inicializa la vista de jugadores
-  	$scope.init();
+        // Se actualiza el jugador con las nuevas habilidades
+        for (var i=0; i < newSkills.length; i++) {
+          var promise = Player.setSkill(jugador.id, newSkills[i]);
+          promises.push(promise);
+        }
+        $q.all(promises).then(function(response){
+          // Se recarga el jugador
+          Player.findById(jugador.id).then(function(response){
+            for (var i=0; i < $scope.jugadores.length; i++) {
+              if ($scope.jugadores[i].id == jugador.id) {
+                $scope.jugadores[i] = response.data[0];
+              }
+            }
+          }, function(error){
+            console.log('Error fetching player ' + jugador.id + ' info: ' + error.message);
+          });
+        }, function(error){
+          console.log('Error saving new skills to player ' + jugador.id + ': ' + error.message);
+        })
+      }, function () {
+        console.log('Modal dismissed at: ' + new Date());
+      });
 
-  	// Actualiza las habilidades del jugador
-  	$scope.refreshHabilidades = function (jugador) {
-  		Player.getHabilidades(jugador.id).
-  			then(function(response) {
-  				jugador.habilidadesJugador = response.data;
-  			}, function(response) {
-  				console.error('Error llamando a Player.getHabilidades(): ' + response.data + ' (' + response.status + ')');
-  			});
-  	};
-
-  	// Actualiza los objetos del jugador
-  	$scope.refreshObjetos = function (jugador) {
-  		Player.getObjetos(jugador.id).
-  			then(function(response) {
-  				jugador.objetosJugador = response.data;
-  			}, function(response) {
-  				console.error('Error llamando a Player.getObjetos(): ' + response.data + ' (' + response.status + ')');
-  			});
-  	};
+    };
 
   	// Se actualizan los campos del jugador
   	$scope.updateJugador = function (jugador) {
-  		Player.save(jugador).
+  		Player.update(jugador).
   			then(function(response) {
   				console.log('Jugador ' + jugador.usuario.alias + ' actualizado: ' + response.status);
   			}, function(response) {
-  				console.error('Error actualizando al jugador ' + jugador.usuario.alias + ': ' + response.data + ' (' + response.status + ')');
+  				console.error('Error actualizando al jugador ' + jugador.Usuario.alias + ': ' + response.data + ' (' + response.status + ')');
   			});
   	};
+
+    // Se inicializa la vista de jugadores
+  	$scope.init();
   }]);

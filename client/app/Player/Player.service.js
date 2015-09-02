@@ -10,48 +10,34 @@ angular.module('descentManagerApp')
   				url: '/api/players'
   			})
   		},
-  		// Método que obtiene las habilidades de un jugador
-  		getHabilidades: function(jugadorId) {
+      // Método que devuelve un jugador a partir de su ID
+      findById : function(id) {
   			return $http({
   				method: "GET",
-  				url: 'http://localhost:8080/DescentManager/jugadores/' + jugadorId + '/habilidades'
+  				url: '/api/players/' + id
   			})
   		},
-  		// Método que obtiene la cantidad de veces que puede usar un jugador una habilidad
-  		getCantidadHabilidad: function(jugadorId, habilidadId) {
-  			return $http({
-  				method: "GET",
-  				url: 'http://localhost:8080/DescentManager/jugadores/' + jugadorId + '/habilidades/' + habilidadId + '/cantidad'
-  			})
-  		},
-  		// Método que obtiene los objetos de un jugador
-  		getObjetos: function(jugadorId) {
-  			return $http({
-  				method: "GET",
-  				url: 'http://localhost:8080/DescentManager/jugadores/' + jugadorId + '/objetos'
-  			})
-  		},
-  		// Método que añade una habilidad a un jugador
-  		setHabilidad: function (jugadorId, habilidad){
+      // Método que añade una habilidad a un jugador
+  		setSkill: function (jugadorId, habilidad){
   			return $http({
   				method: "POST",
-  				url: 'http://localhost:8080/DescentManager/jugadores/' + jugadorId + '/habilidades',
+  				url: '/api/players/' + jugadorId + '/skills',
   				data: habilidad
   			})
   		},
   		// Método que añade un objeto a un jugador
-  		setObjeto: function(jugadorId, objeto) {
+  		setItem: function(jugadorId, objeto) {
   			return $http({
   				method: "POST",
-  				url: 'http://localhost:8080/DescentManager/jugadores/' + jugadorId + '/objetos',
+  				url: '/api/players/' + jugadorId + '/items',
   				data: objeto
   			})
   		},
   		// Método que actualiza un jugador
   		update: function(jugador) {
   			return $http({
-  				method: "POST",
-  				url: 'http://localhost:8080/DescentManager/jugadores',
+  				method: "PUT",
+  				url: '/api/players',
   				data: jugador
   			})
   		}

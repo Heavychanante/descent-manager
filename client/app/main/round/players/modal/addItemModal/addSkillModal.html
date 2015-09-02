@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <h3 class="modal-title">Añadir habilidad</h3>
+</div>
+<div class="modal-body">
+  <div class="table-responsive" ng-show="currentSkills.length > 0">
+	   <table class="table table-striped table-bordered text-center">
+       <thead>
+         <tr>
+           <th></th>
+           <th>Nombre</th>
+           <th>Penalización</th>
+           <th>Coste de experiencia</th>
+           <th>Descripción</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr ng-repeat="skill in currentSkills" ng-class="{info: skill.selected}">
+           <td>
+             <input type="checkbox" ng-model="skill.selected"></input>
+           </td>
+           <td ng-bind="skill.nombre"></td>
+           <td ng-bind="skill.penalizacion"></td>
+           <td ng-bind="skill.coste_experiencia"></td>
+           <td>
+             <span class="glyphicon glyphicon-info-sign" aria-hidden="true"
+                   data-toggle="tooltip" data-placement="right"
+                   title="{{skill.descripcion}}">
+             </span>
+					 </td>
+         </tr>
+       </tbody>
+     </table>
+   </div>
+   <div>
+     <p ng-hide="totalItems > 0">No hay habilidades asignables al ugador</p>
+   </div>
+   <pagination total-items="totalItems" ng-model="currentPage" boundary-links="true" items-per-page="pageSize"
+               rotate="false" max-size="15" ng-change="pageChanged()"></pagination>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="save()">Guardar</button>
+  <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+</div>

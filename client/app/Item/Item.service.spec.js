@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: Object', function () {
+describe('Service: Item', function () {
 
   // load the service's module
   beforeEach(module('descentManagerApp'));
 
   // instantiate service
-  var Object;
-  beforeEach(inject(function (_Object_) {
-    Object = _Object_;
+  var Item;
+  beforeEach(inject(function (_Item_) {
+    Item = _Item_;
   }));
 
   it('should do something', function () {
-    expect(!!Object).toBe(true);
+    expect(!!Item).toBe(true);
   });
 
 });

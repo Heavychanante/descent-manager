@@ -1,12 +1,11 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./player.controller');
+var controller = require('./skill.controller');
 
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/:id', controller.findById);
-router.post('/:id/skills', controller.setSkill);
+router.get('/player/:id', controller.habilidadesAsignables);
 
 module.exports = router;

@@ -15,6 +15,7 @@ module.exports = function(app, passport) {
   app.use('/api/*', auth.auth);
 
   // Insert routes below
+  app.use('/api/skills', require('./api/skill'));
   app.use('/api/players', require('./api/player'));
 
   // All undefined asset or api routes should return a 404

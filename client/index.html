@@ -14,6 +14,7 @@
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+      <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -22,6 +23,7 @@
       <link rel="stylesheet" href="app/app.css">
       <link rel="stylesheet" href="app/login/login.css">
       <link rel="stylesheet" href="app/main/main.css">
+      <link rel="stylesheet" href="app/main/round/players/modal/addSkillModal/addSkillModal.css">
       <link rel="stylesheet" href="app/main/round/players/players.css">
       <link rel="stylesheet" href="app/main/round/round.css">
       <link rel="stylesheet" href="app/register/register.css">
@@ -37,7 +39,7 @@
 
     <!-- Add your site or application content here -->
     <div ui-view=""></div>
-    
+
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -63,19 +65,24 @@
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,client}) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
-      <script src="app/Object/Object.service.js"></script>
+      <script src="app/Item/Item.service.js"></script>
+      <script src="app/Object/Item.service.js"></script>
       <script src="app/Player/Player.service.js"></script>
       <script src="app/Skill/Skill.service.js"></script>
+      <script src="app/filters/getCantidad/getCantidad.filter.js"></script>
       <script src="app/filters/numberToBoolean/numberToBoolean.filter.js"></script>
       <script src="app/login/login.controller.js"></script>
       <script src="app/login/login.js"></script>
       <script src="app/main/main.controller.js"></script>
       <script src="app/main/main.js"></script>
+      <script src="app/main/round/players/modal/addItemModal/addSkillModal.controller.js"></script>
+      <script src="app/main/round/players/modal/addSkillModal/addSkillModal.controller.js"></script>
       <script src="app/main/round/players/players.controller.js"></script>
       <script src="app/main/round/players/players.js"></script>
       <script src="app/main/round/round.controller.js"></script>

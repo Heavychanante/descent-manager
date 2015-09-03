@@ -7,21 +7,21 @@ angular.module('descentManagerApp')
   		list : function() {
   			return $http({
                   method: 'GET',
-                  url: 'http://localhost:8080/DescentManager/objetos/'
+                  url: '/api/items/'
               })
   		},
   		// Método que obtiene los objetos asignables a un jugador
   		getObjetosAsignables : function(jugadorId) {
   			return $http({
                   method: 'GET',
-                  url: 'http://localhost:8080/DescentManager/objetos/jugador/' + jugadorId
+                  url: '/api/items/player/' + jugadorId
               })
   		},
   		// Método que obtiene listado paginado de objetos asignables a un jugador
   		getObjetosAsignablesPaginadas: function(jugadorId, indice, cantidad) {
   			return $http({
   				method: "GET",
-  				url: 'http://localhost:8080/DescentManager/objetos/jugador/' + jugadorId + '/i/' + indice + '/n/' + cantidad
+  				url: 'api/items/player/' + jugadorId + '/i/' + indice + '/n/' + cantidad
   			})
   		}
   	}

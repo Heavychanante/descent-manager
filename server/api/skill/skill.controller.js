@@ -27,7 +27,7 @@ exports.index = function(req, res) {
 
 exports.habilidadesAsignables = function(req, res) {
   Jugador.findAll({ include: [{all : true}],
-                    where: {id : req.params.id}})
+                    where: {id : req.params.id} })
     .then(function(jugador) {
       Habilidad.findAll({
           include: [{

@@ -29,7 +29,6 @@ angular.module('descentManagerApp')
         }
       });
 
-
       modalInstance.result.then(function (newSkills) {
         var promises = new Array();
 
@@ -56,6 +55,46 @@ angular.module('descentManagerApp')
         console.log('Modal dismissed at: ' + new Date());
       });
 
+    };
+
+    $scope.openItemModal = function(jugador) {
+      var modalInstance = $modal.open({
+        animation: true,
+        templateUrl: 'app/main/round/players/modal/addItemModal/addItemModal.html',
+        controller: 'AddItemModalCtrl',
+        size: 'lg',
+        resolve: {
+          jugador: function () {
+            return jugador;
+          }
+        }
+      });
+
+      modalInstance.result.then(function (newItems) {
+        var promises = new Array();
+
+        // Se actualiza el jugador con los nuevos objetos
+        for (var i=0; i < newItems.length; i++) {
+          var promise = Player.setItem(jugador.id, newItems[i]);
+          promises.push(promise);
+        }
+        $q.all(promises).then(function(response){
+          // Se recarga el jugador
+          Player.findById(jugador.id).then(function(response){
+            for (var i=0; i < $scope.jugadores.length; i++) {
+              if ($scope.jugadores[i].id == jugador.id) {
+                $scope.jugadores[i] = response.data[0];
+              }
+            }
+          }, function(error){
+            console.log('Error fetching player ' + jugador.id + ' info: ' + error.message);
+          });
+        }, function(error){
+          console.log('Error saving new items to player ' + jugador.id + ': ' + error.message);
+        })
+      }, function () {
+        console.log('Modal dismissed at: ' + new Date());
+      });
     };
 
   	// Se actualizan los campos del jugador

@@ -3,8 +3,8 @@
 angular.module('descentManagerApp')
   .controller('AddSkillModalCtrl', function ($scope, $modalInstance, Skill, uiGridConstants, jugador) {
     $scope.player = jugador;
-    $scope.totalItems = 0;
-    $scope.currentPage = 0;
+    $scope.totalItems;
+    $scope.currentPage;
     $scope.pageSize = 5;
     $scope.totalSkills = [];
     $scope.currentSkills = [];
@@ -25,7 +25,8 @@ angular.module('descentManagerApp')
     };
 
     $scope.pageChanged = function() {
-      $scope.currentSkills = $scope.totalSkills.slice($scope.currentPage, $scope.currentPage + $scope.pageSize);
+      $scope.currentSkills = $scope.totalSkills.slice(($scope.currentPage - 1) * $scope.pageSize,
+                                                      (($scope.currentPage - 1)*$scope.pageSize) + $scope.pageSize);
     };
 
     // Recupera las habilidades asignables al jugador

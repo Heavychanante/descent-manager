@@ -137,18 +137,19 @@ exports.setItem = function(req, res) {
 
 // Update a player
 exports.update = function(req, res) {
-  /**
-  console.log(req.body.id);
-
   Jugador.findAll({ include: [{all : true}],
                     where: {id : req.body.id}})
-    .then(function(jugador) {
-      console.log(jugador);
-      jugador.updateAttributes(
-        { modificacion: new Date() },
-        { Habilidads: req.body.Habilidads })
+    .then(function(jugadores) {
+      var jugador = jugadores[0];
+      jugador.updateAttributes(req.body)
         .then(function() {
-            res.status(200).end();
+            jugador.modificacion = new Date();
+            jugador.save().then(function(response){
+                res.status(200).end();
+            }, function(error){
+              console.log("Jugador.save() -> ERROR = " + error);
+              res.status(500).send(error.message);
+            });
           }, function(error){
             console.log("Jugador.updateAttributes() -> ERROR = " + error);
             res.status(500).send(error.message);
@@ -157,5 +158,4 @@ exports.update = function(req, res) {
       console.log("Jugador.findAll() -> ERROR = " + error);
       res.status(500).send(error.message);
     })
-    */
 };

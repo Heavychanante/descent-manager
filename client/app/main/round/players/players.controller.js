@@ -97,11 +97,28 @@ angular.module('descentManagerApp')
       });
     };
 
+    $scope.incLife = function(jugador) {
+      jugador.vida++;
+    }
+
+    $scope.decLife = function(jugador) {
+      jugador.vida--;
+    }
+
+    $scope.incStamina = function(jugador) {
+      jugador.aguante++;
+    }
+
+    $scope.decStamina = function(jugador) {
+      jugador.aguante--;
+    }
+
   	// Se actualizan los campos del jugador
   	$scope.updateJugador = function (jugador) {
   		Player.update(jugador).
   			then(function(response) {
-  				console.log('Jugador ' + jugador.usuario.alias + ' actualizado: ' + response.status);
+  				console.log('Jugador ' + jugador.Usuario.alias + ' actualizado: ' + response.status);
+          $scope.init();
   			}, function(response) {
   				console.error('Error actualizando al jugador ' + jugador.Usuario.alias + ': ' + response.data + ' (' + response.status + ')');
   			});

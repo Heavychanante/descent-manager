@@ -138,13 +138,13 @@
 								<div class="col-md-3" style="padding-top: 6px">
 									<label>Vida</label>
 								</div>
-								<div class="input-group col-md-7" style="width: 55%">
+								<div class="input-group col-md-7 btn-group" style="width: 55%">
 									<span class="input-group-btn">
-										<button class="btn btn-default" type="button">-</button>
-									</span> <input type="text"  ng-model="jugador.vida"
+										<button class="btn btn-default" type="button" ng-click="decLife(jugador)" ng-disabled="jugador.vida == 0">-</button>
+									</span> <input type="text"  ng-model="jugador.vida" ng-disabled="true"
 										class="form-control input-mini text-center"> <span
 										class="input-group-btn">
-										<button class="btn btn-default" type="button">+</button>
+										<button class="btn btn-default" type="button" ng-click="incLife(jugador)" ng-disabled="jugador.vida == jugador.Personaje.vida">+</button>
 									</span>
 								</div>
 							</div>
@@ -154,11 +154,11 @@
 								</div>
 								<div class="input-group col-md-7 " style="width: 45%">
 									<span class="input-group-btn">
-										<button class="btn btn-default" type="button">-</button>
+										<button class="btn btn-default" type="button" ng-click="decStamina(jugador)" ng-disabled="jugador.aguante == 0">-</button>
 									</span>
-									<input type="text" ng-model="jugador.aguante" class="form-control input-mini text-center">
+									<input type="text" ng-model="jugador.aguante" class="form-control input-mini text-center" ng-disabled="true">
 									<span class="input-group-btn">
-										<button class="btn btn-default" type="button">+</button>
+										<button class="btn btn-default" type="button" ng-click="incStamina(jugador)" ng-disabled="jugador.aguante == jugador.Personaje.aguante">+</button>
 									</span>
 								</div>
 							</div>
@@ -185,10 +185,10 @@
 								<label>Proeza</label> <input type="checkbox" ng-model="jugador.proeza"></input>
 							</div>
 							<div class="col-md-2" style="padding-left: 30px">
-								<label>Oro</label> <input type="text" ng-model="jugador.oro"></input>
+								<label>Oro</label> <input type="number" min="0" ng-model="jugador.oro"></input>
 							</div>
 							<div class="col-md-8" style="padding-left: 30px">
-								<label>Experiencia</label> <input type="text" ng-model="jugador.experiencia"></input>
+								<label>Experiencia</label> <input type="number" min="0" ng-model="jugador.experiencia"></input>
 							</div>
 						</div>
 

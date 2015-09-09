@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('descentManagerApp')
-  .controller('PlayersCtrl', ['$scope', '$modal', 'Player', 'uiGridConstants', '$q', function($scope, $modal, Player, uiGridConstants, $q) {
+  .controller('PlayersCtrl', ['$scope', '$modal', 'Player', 'uiGridConstants', '$q', 'Alert', '$timeout',
+              function($scope, $modal, Player, uiGridConstants, $q, Alert, $timeout) {
     $scope.init = function() {
   		$scope.selectedTab = 0;
   		Player.list().
@@ -115,10 +116,18 @@ angular.module('descentManagerApp')
 
   	// Se actualizan los campos del jugador
   	$scope.updateJugador = function (jugador) {
+      Alert.showLoader();
   		Player.update(jugador).
   			then(function(response) {
   				console.log('Jugador ' + jugador.Usuario.alias + ' actualizado: ' + response.status);
           $scope.init();
+          Alert.hideLoader();
+          Alert.showAlert("El jugador se ha actualizado correctamente");
+          //$timeout(function(){
+          //  Alert.hideLoader();
+          //  Alert.showAlert("El jugador se ha actualizado correctamente");
+          //}, 3500);
+
   			}, function(response) {
   				console.error('Error actualizando al jugador ' + jugador.Usuario.alias + ': ' + response.data + ' (' + response.status + ')');
   			});

@@ -8,7 +8,9 @@ angular.module('descentManagerApp', [
   'ui.bootstrap',
   'ui.grid',
   'ui.grid.autoResize',
-  'ui.grid.resizeColumns'
+  'ui.grid.resizeColumns',
+  'ngAnimate',
+  'angularSpinners'
 ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider
@@ -20,6 +22,10 @@ angular.module('descentManagerApp', [
   // Este método se ejecutará cada vez que cambie el estado de navegación
   // Comprobará si el usuario está logeado y si no es así redirigirá a la página de login
   .run(function($rootScope, $http, $state) {
+    $rootScope.alertMessage = "";
+    $rootScope.showAlertMessage = false;
+    $rootScope.showLoader = false;
+
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
       if (toState.url != "/register" && toState.url != "/login") {
         $http.get("/loggedin")

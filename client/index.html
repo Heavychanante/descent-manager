@@ -13,8 +13,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
-      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/angular-ui-grid/ui-grid.css" />
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -61,18 +61,21 @@
       <!-- bower:js -->
       <script src="bower_components/jquery/dist/jquery.js"></script>
       <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-resource/angular-resource.js"></script>
-      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-animate/angular-animate.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
-      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="bower_components/angular-resource/angular-resource.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-spinners/dist/angular-spinners.min.js"></script>
       <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js({.tmp,client}) app/app.js -->
       <script src="app/app.js"></script>
       <!-- injector:js -->
+      <script src="app/Alert/Alert.service.js"></script>
       <script src="app/Item/Item.service.js"></script>
       <script src="app/Player/Player.service.js"></script>
       <script src="app/Skill/Skill.service.js"></script>

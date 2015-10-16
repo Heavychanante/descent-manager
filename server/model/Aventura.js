@@ -1,7 +1,7 @@
 /* jshint indent: 2 */
 
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('Campania', {
+  return sequelize.define('Aventura', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -17,6 +17,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: '1'
     },
+    jugadores: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 0
+    },
     creacion: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -29,6 +34,6 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     timestamps: false,
-    tableName: 'campania'
+    tableName: 'aventura'
   });
 };

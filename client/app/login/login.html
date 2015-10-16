@@ -13,16 +13,13 @@
     <input type="text" id="inputUsername" ng-model="credentials.username" class="form-control" placeholder="Username" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
     <input type="password" id="inputPassword" ng-model="credentials.password" class="form-control" placeholder="Password" required>
-    <!--
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    -->
     <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="login(credentials)">Sign in</button>
     <a href="#" class="register" ng-click="register()">Register here</a>
   </form>
 </div>
 
-<footer></footer>
+<div class="login-footer">
+  <p>Descent Manager v1.0.0 |
+    <a href="https://twitter.com/tyhenkel">@Heavychanante</a>
+  </p>
+</div>

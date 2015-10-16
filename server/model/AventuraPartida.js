@@ -1,7 +1,14 @@
-/* jshint indent: 2 */
-
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('CampaniaPartida', {
+  return sequelize.define('AventuraPartida', {
+    ganadores: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    activa: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: 0
+    },
     creacion: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -14,6 +21,6 @@ module.exports = function(sequelize, DataTypes) {
     }
   }, {
     timestamps: false,
-    tableName: 'campania_partida'
+    tableName: 'aventura_partida'
   });
 };

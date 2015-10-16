@@ -6,6 +6,10 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
+    alias: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     creacion: {
       type: DataTypes.DATE,
       allowNull: false,

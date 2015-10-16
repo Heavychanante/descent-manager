@@ -2,7 +2,7 @@
 
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" ng-repeat="jugador in jugadores" ng-class="{active: $index == selectedTab}" ng-click="setSelected($index)">
-						<a ng-href="#jugador{{jugador.id}}" aria-controls="#jugador{{jugador.id}}" role="tab" data-toggle="tab" ng-bind="jugador.Usuario.alias"></a>
+						<a ng-href="#jugador{{jugador.id}}" aria-controls="#jugador{{jugador.id}}" role="tab" data-toggle="tab" ng-bind="jugador.alias"></a>
 					</li>
 				</ul>
 

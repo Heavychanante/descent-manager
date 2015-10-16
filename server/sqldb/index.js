@@ -18,8 +18,8 @@ var db = {
 db.Fichero          = db.sequelize.import('../model/Fichero');
 db.Usuario          = db.sequelize.import('../model/Usuario');
 db.Arquetipo        = db.sequelize.import('../model/Arquetipo');
-db.Campania         = db.sequelize.import('../model/Campania');
-db.CampaniaPartida  = db.sequelize.import('../model/CampaniaPartida');
+db.Aventura         = db.sequelize.import('../model/Aventura');
+db.AventuraPartida  = db.sequelize.import('../model/AventuraPartida');
 db.Partida          = db.sequelize.import('../model/Partida');
 db.Clase            = db.sequelize.import('../model/Clase');
 db.Dado             = db.sequelize.import('../model/Dado');
@@ -41,12 +41,12 @@ db.Fichero.hasMany(db.Arquetipo, {foreignKey : 'fichero_id'});
 db.Arquetipo.belongsTo(db.Fichero, {foreignKey: 'fichero_id'});
 
 // 1:N
-db.Campania.hasOne(db.Campania, {foreignKey : 'campania_id'});
-db.Campania.belongsTo(db.Campania, {foreignKey : 'campania_id'});
+db.Aventura.hasOne(db.Aventura, {foreignKey : 'aventura_id'});
+db.Aventura.belongsTo(db.Aventura, {foreignKey : 'aventura_id'});
 
 // M:N
-db.Campania.belongsToMany(db.Partida, {through: 'CampaniaPartida', foreignKey: 'campania_id'});
-db.Partida.belongsToMany(db.Campania, {through: 'CampaniaPartida', foreignKey: 'partida_id'});
+db.Aventura.belongsToMany(db.Partida, {through: 'AventuraPartida', foreignKey: 'aventura_id'});
+db.Partida.belongsToMany(db.Aventura, {through: 'AventuraPartida', foreignKey: 'partida_id'});
 
 // 1:N
 db.Arquetipo.hasMany(db.Clase, {foreignKey : 'arquetipo_id'});
@@ -73,10 +73,6 @@ db.Arquetipo.hasMany(db.Personaje, {foreignKey : 'arquetipo_id'});
 db.Personaje.belongsTo(db.Arquetipo, {foreignKey : 'arquetipo_id'});
 
 // 1:N
-db.Usuario.hasMany(db.Jugador, {foreignKey : 'usuario_id'});
-db.Jugador.belongsTo(db.Usuario, {foreignKey : 'usuario_id'});
-
-// 1:N
 db.Rol.hasMany(db.Jugador, {foreignKey : 'rol_id'});
 db.Jugador.belongsTo(db.Rol, {foreignKey : 'rol_id'});
 
@@ -87,6 +83,10 @@ db.Jugador.belongsTo(db.Personaje, {foreignKey : 'personaje_id'});
 // 1:N
 db.Partida.hasMany(db.Jugador, {foreignKey : 'partida_id'});
 db.Jugador.belongsTo(db.Partida, {foreignKey : 'partida_id'});
+
+// 1:N
+db.Usuario.hasMany(db.Partida, {foreignKey : 'usuario_id'});
+db.Partida.belongsTo(db.Usuario, {foreignKey : 'usuario_id'});
 
 // 1:N
 db.Clase.hasMany(db.Jugador, {foreignKey : 'clase_id'});

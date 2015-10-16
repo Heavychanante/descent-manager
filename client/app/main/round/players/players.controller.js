@@ -123,11 +123,6 @@ angular.module('descentManagerApp')
           $scope.init();
           Alert.hideLoader();
           Alert.showAlert("El jugador se ha actualizado correctamente");
-          //$timeout(function(){
-          //  Alert.hideLoader();
-          //  Alert.showAlert("El jugador se ha actualizado correctamente");
-          //}, 3500);
-
   			}, function(response) {
   				console.error('Error actualizando al jugador ' + jugador.Usuario.alias + ': ' + response.data + ' (' + response.status + ')');
   			});

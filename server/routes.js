@@ -42,7 +42,7 @@ module.exports = function(app, passport) {
   // Cierra la sesión del usuario
   app.post("/logout", function(req, res){
     req.logOut();
-    res.send(200);
+    res.status(200).end();
   });
   //--------------------------------------------------------------------//
 

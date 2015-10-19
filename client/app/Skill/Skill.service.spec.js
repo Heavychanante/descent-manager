@@ -11,8 +11,13 @@ describe('Service: Skill', function () {
     Skill = _Skill_;
   }));
 
-  it('should do something', function () {
-    expect(!!Skill).toBe(true);
+  it('debe devolver las habilidades asignables a un jugador', function () {
+    var habilidades = Skill.getHabilidadesAsignables(1);
+    expect(habilidades).toBeDefined();
   });
 
+  it('debe devolver las habilidades asignables a un jugador paginadas', function () {
+    var habilidades = Skill.getHabilidadesAsignablesPaginadas(1,1,5);
+    expect(habilidades).toBeDefined();
+  });
 });

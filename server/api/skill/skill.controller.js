@@ -28,20 +28,24 @@ exports.index = function(req, res) {
 exports.habilidadesAsignables = function(req, res) {
   Jugador.findAll({ include: [{all : true}],
                     where: {id : req.params.id} })
-    .then(function(jugador) {
-      Habilidad.findAll({
-          include: [{
-            model: Clase,
-            where: {
-              id: jugador[0].Clase.id
-            }
-          }]
-        }).then(function(habilidades) {
-          res.json(habilidades);
-        }, function(error){
-          console.log("Habilidad.findAll() -> " + error);
-          res.status(500).end();
-        })
+    .then(function(jugadores) {
+      if (jugadores.length > 0) {
+        Habilidad.findAll({
+            include: [{
+              model: Clase,
+              where: {
+                id: jugadores[0].Clase.id
+              }
+            }]
+          }).then(function(habilidades) {
+            res.json(habilidades);
+          }, function(error){
+            console.log("Habilidad.findAll() -> " + error);
+            res.status(500).end();
+          })
+      } else {
+        res.json(jugadores);
+      }
     }, function(error){
       console.log("Jugador.findById() -> ERROR = " + error);
       res.status(500).end();

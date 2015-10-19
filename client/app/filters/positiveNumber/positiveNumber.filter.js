@@ -5,7 +5,7 @@ angular.module('descentManagerApp')
     return function (input) {
       var result = input;
       var type = typeof input;
-      if (type != "number") {
+      if (type !== 'number') {
         result = 0;
       } else {
         if (input < 0) {

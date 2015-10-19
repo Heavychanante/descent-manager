@@ -14,7 +14,7 @@ describe('Controller: MainCtrl', function() {
   // Initialize the controller and a mock scope
   beforeEach(inject(function(_$httpBackend_, $controller, $rootScope, $state) {
     $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET('/api/things')
+    $httpBackend.expectPOST('/logout')
       .respond(['HTML5 Boilerplate', 'AngularJS', 'Karma', 'Express']);
 
     scope = $rootScope.$new();
@@ -24,8 +24,7 @@ describe('Controller: MainCtrl', function() {
     });
   }));
 
-  it('should attach a list of things to the scope', function() {
-    $httpBackend.flush();
-    expect(scope.awesomeThings.length).toBe(4);
+  it('debe cerrar la sesión del usuario', function() {
+    expect(state).toEqual('login');
   });
 });

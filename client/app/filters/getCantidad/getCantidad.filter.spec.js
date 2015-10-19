@@ -11,9 +11,16 @@ describe('Filter: getCantidad', function () {
     getCantidad = $filter('getCantidad');
   }));
 
-  it('should return the input prefixed with "getCantidad filter:"', function () {
-    var text = 'angularjs';
-    expect(getCantidad(text)).toBe('getCantidad filter: ' + text);
+  it('debe devolver la cantidad correcta si el objeto de entrada es de tipo \'JugadorHabilidad\'', function () {
+    var jugadorHabilidad = {cantidad: 1};
+    var input = {JugadorHabilidad: jugadorHabilidad};
+    expect(getCantidad(input)).toEqual(1);
   });
 
+  it('debe devolver la cantidad correcta si el objeto de entrada es de tipo \'Jugador\'', function () {
+    var jugadorHabilidad = {cantidad: 1};
+    var jugador = {JugadorHabilidad: jugadorHabilidad};
+    var input = {Jugadors: [jugador]};
+    expect(getCantidad(input)).toEqual(1);
+  });
 });

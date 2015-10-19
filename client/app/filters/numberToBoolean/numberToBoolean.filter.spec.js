@@ -11,9 +11,12 @@ describe('Filter: numberToBoolean', function () {
     numberToBoolean = $filter('numberToBoolean');
   }));
 
-  it('should return the input prefixed with "numberToBoolean filter:"', function () {
-    var text = 'angularjs';
-    expect(numberToBoolean(text)).toBe('numberToBoolean filter: ' + text);
+  it('debe devolver \'Sí\' si el valor de entrada es 1', function () {
+    expect(numberToBoolean(1)).toEqual('Sí');
+  });
+
+  it('debe devolver \'No\' si el valor de entrada es 0', function () {
+    expect(numberToBoolean(0)).toEqual('No');
   });
 
 });

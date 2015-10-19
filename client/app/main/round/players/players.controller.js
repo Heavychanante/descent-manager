@@ -1,8 +1,10 @@
+/* jshint unused: false */
+
 'use strict';
 
 angular.module('descentManagerApp')
-  .controller('PlayersCtrl', ['$scope', '$modal', 'Player', 'uiGridConstants', '$q', 'Alert', '$timeout',
-              function($scope, $modal, Player, uiGridConstants, $q, Alert, $timeout) {
+  .controller('PlayersCtrl', ['$scope', '$modal', 'Player', 'uiGridConstants', '$q', 'Alert',
+              function($scope, $modal, Player, uiGridConstants, $q, Alert) {
     $scope.init = function() {
   		$scope.selectedTab = 0;
   		Player.list().
@@ -31,7 +33,7 @@ angular.module('descentManagerApp')
       });
 
       modalInstance.result.then(function (newSkills) {
-        var promises = new Array();
+        var promises = [];
 
         // Se actualiza el jugador con las nuevas habilidades
         for (var i=0; i < newSkills.length; i++) {
@@ -42,7 +44,7 @@ angular.module('descentManagerApp')
           // Se recarga el jugador
           Player.findById(jugador.id).then(function(response){
             for (var i=0; i < $scope.jugadores.length; i++) {
-              if ($scope.jugadores[i].id == jugador.id) {
+              if ($scope.jugadores[i].id === jugador.id) {
                 $scope.jugadores[i] = response.data[0];
               }
             }
@@ -51,7 +53,7 @@ angular.module('descentManagerApp')
           });
         }, function(error){
           console.log('Error saving new skills to player ' + jugador.id + ': ' + error.message);
-        })
+        });
       }, function () {
         console.log('Modal dismissed at: ' + new Date());
       });
@@ -72,7 +74,7 @@ angular.module('descentManagerApp')
       });
 
       modalInstance.result.then(function (newItems) {
-        var promises = new Array();
+        var promises = [];
 
         // Se actualiza el jugador con los nuevos objetos
         for (var i=0; i < newItems.length; i++) {
@@ -83,7 +85,7 @@ angular.module('descentManagerApp')
           // Se recarga el jugador
           Player.findById(jugador.id).then(function(response){
             for (var i=0; i < $scope.jugadores.length; i++) {
-              if ($scope.jugadores[i].id == jugador.id) {
+              if ($scope.jugadores[i].id === jugador.id) {
                 $scope.jugadores[i] = response.data[0];
               }
             }
@@ -92,7 +94,7 @@ angular.module('descentManagerApp')
           });
         }, function(error){
           console.log('Error saving new items to player ' + jugador.id + ': ' + error.message);
-        })
+        });
       }, function () {
         console.log('Modal dismissed at: ' + new Date());
       });
@@ -100,31 +102,31 @@ angular.module('descentManagerApp')
 
     $scope.incLife = function(jugador) {
       jugador.vida++;
-    }
+    };
 
     $scope.decLife = function(jugador) {
       jugador.vida--;
-    }
+    };
 
     $scope.incStamina = function(jugador) {
       jugador.aguante++;
-    }
+    };
 
     $scope.decStamina = function(jugador) {
       jugador.aguante--;
-    }
+    };
 
   	// Se actualizan los campos del jugador
   	$scope.updateJugador = function (jugador) {
       Alert.showLoader();
   		Player.update(jugador).
   			then(function(response) {
-  				console.log('Jugador ' + jugador.Usuario.alias + ' actualizado: ' + response.status);
+  				console.log('Jugador ' + jugador.alias + ' actualizado: ' + response.status);
           $scope.init();
           Alert.hideLoader();
-          Alert.showAlert("El jugador se ha actualizado correctamente");
+          Alert.showAlert('El jugador se ha actualizado correctamente');
   			}, function(response) {
-  				console.error('Error actualizando al jugador ' + jugador.Usuario.alias + ': ' + response.data + ' (' + response.status + ')');
+  				console.error('Error actualizando al jugador ' + jugador.alias + ': ' + response.data + ' (' + response.status + ')');
   			});
   	};
 

@@ -7,15 +7,15 @@ angular.module('descentManagerApp')
         $rootScope.alertMessage = message;
         $rootScope.showAlertMessage = true;
         $timeout(function () {
-            $rootScope.alertMessage = "";
+            $rootScope.alertMessage = '';
             $rootScope.showAlertMessage = false;
         }, 3000);
       },
-      showLoader: function(message) {
+      showLoader: function() {
         $rootScope.showLoader = true;
       },
-      hideLoader: function(message) {
+      hideLoader: function() {
         $rootScope.showLoader = false;
       }
-    }
+    };
   });

@@ -11,9 +11,15 @@ describe('Filter: positiveNumber', function () {
     positiveNumber = $filter('positiveNumber');
   }));
 
-  it('should return the input prefixed with "positiveNumber filter:"', function () {
-    var text = 'angularjs';
-    expect(positiveNumber(text)).toBe('positiveNumber filter: ' + text);
+  it('debe devolver el valor positivo del valor de entrada si este es negativo', function () {
+    expect(positiveNumber(-1)).toEqual(1);
   });
 
+  it('debe devolver el valor positivo del valor de entrada si este es positivo', function () {
+    expect(positiveNumber(1)).toEqual(1);
+  });
+
+  it('debe devolver 0 si el valor de entrada es 0', function () {
+    expect(positiveNumber(0)).toEqual(0);
+  });
 });

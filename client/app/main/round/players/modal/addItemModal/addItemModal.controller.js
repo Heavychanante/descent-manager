@@ -3,14 +3,14 @@
 angular.module('descentManagerApp')
   .controller('AddItemModalCtrl', function ($scope, $modalInstance, Item, uiGridConstants, jugador) {
     $scope.player = jugador;
-    $scope.totalSize;
-    $scope.currentPage;
+    $scope.totalSize = 0;
+    $scope.currentPage = 0;
     $scope.pageSize = 10;
     $scope.totalItems = [];
     $scope.currentItems = [];
 
     $scope.save = function () {
-      var newItems = new Array();
+      var newItems = [];
       // Se guardan las nuevas habilidades del jugador
       for (var i=0; i < $scope.totalItems.length; i++) {
         if ($scope.totalItems[i].selected) {
@@ -42,6 +42,6 @@ angular.module('descentManagerApp')
         console.log($scope.totalSize);
         console.log($scope.numPages);
       }, function(error){
-        console.log("ERROR getObjetosAsignables -> " + error);
-      })
+        console.log('ERROR getObjetosAsignables -> ' + error);
+      });
   });

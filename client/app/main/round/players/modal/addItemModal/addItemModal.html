@@ -24,7 +24,7 @@
            <td ng-bind="item.tipo"></td>
            <td ng-bind="item.precio"></td>
            <td ng-bind="item.manos"></td>
-           <td ng-bind="item.a_distancia"></td>
+           <td ng-bind="item.a_distancia | numberToBoolean"></td>
            <td>
              <span class="glyphicon glyphicon-info-sign" aria-hidden="true"
                    data-toggle="tooltip" data-placement="right"
@@ -36,7 +36,7 @@
      </table>
    </div>
    <div>
-     <p ng-hide="totalSize > 0">No hay objetos asignables al ugador</p>
+     <p ng-hide="totalSize > 0">No hay objetos asignables al jugador</p>
    </div>
    <pagination total-items="totalSize" ng-model="currentPage" boundary-links="true" items-per-page="pageSize"
                rotate="false" max-size="15" ng-change="pageChanged()"></pagination>

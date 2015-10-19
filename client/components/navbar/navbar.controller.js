@@ -2,5 +2,5 @@
 
 angular.module('descentManagerApp')
   .controller('NavbarCtrl', function ($scope) {
-    
+    $scope.message = '';
   });

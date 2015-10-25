@@ -6,22 +6,16 @@
       </div>
       <div class="form-group">
         <!--<label for="gameName" class="control-label" required autofocus>Nombre</label>-->
-        <input type="text" class="form-control" id="gameName" placeholder="Nombre" ng-model="newGame.nombre">
+        <input type="text" class="form-control" id="gameName" placeholder="Nombre" ng-model="newGame.name">
       </div>
       <div class="form-group">
         <div class="list-group">
-          <a href="#" class="list-group-item">
-              Jugador 1 <span class="glyphicon glyphicon-remove pull-right"></span>
+          <a href="#" class="list-group-item" ng-repeat="player in newGame.players">
+              <span class="glyphicon glyphicon-remove pull-right"></span>
           </a>
-          <a href="#" class="list-group-item">
-              Jugador 2 <span class="glyphicon glyphicon-remove pull-right"></span>
-          </a>
-          <a href="#" class="list-group-item">
-              Jugador 3 <span class="glyphicon glyphicon-remove pull-right"></span>
-          </a>
-          <a href="#" class="list-group-item">
-              Jugador 4 <span class="glyphicon glyphicon-remove pull-right"></span>
-          </a>
+          <button type="button" class="btn btn-default btn-md pull-right" ng-click="addPlayer()" ng-show="newGame.players.length < 4">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true" title="Añadir jugador"></span>
+          </button>
         </div>
       </div>
       <div class="form-group">

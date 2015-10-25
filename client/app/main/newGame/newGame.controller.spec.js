@@ -15,7 +15,19 @@ describe('Controller: NewGameCtrl', function () {
     });
   }));
 
-  it('should ...', function () {
-    expect(1).toEqual(1);
+  it('debe inicializar una partida sin nombre', function () {
+    expect(scope.newGame).toBeDefined()
+    expect(scope.newGame.name).toBe('');
+  });
+
+  it('debe inicializar una partida sin jugadores', function () {
+    expect(scope.newGame).toBeDefined()
+    expect(scope.newGame.players.length).toBe(0);
+  });
+
+  it('debe añadir jugadores a la partida', function () {
+    var previousLength = scope.newGame.players.length;
+    scope.addPlayer();
+    expect(scope.newGame.players.length).toBe(previousLength+1);
   });
 });

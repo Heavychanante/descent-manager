@@ -10,5 +10,7 @@ router.put('/', controller.update);
 router.get('/:id', controller.findById);
 router.post('/:id/skills', controller.setSkill);
 router.post('/:id/items', controller.setItem);
+router.delete('/:jugadorId/skills/:habilidadId', controller.deleteSkill);
+router.delete('/:jugadorId/items/:objetoId', controller.deleteItem);
 
 module.exports = router;

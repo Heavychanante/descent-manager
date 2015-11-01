@@ -18,4 +18,12 @@ describe('Controller: PlayersCtrl', function () {
   it('should ...', function () {
     expect(1).toEqual(1);
   });
+
+  it('debe eliminar una habilidad', function(){
+
+  });
+
+  it('debe eliminar un objeto', function(){
+
+  });
 });

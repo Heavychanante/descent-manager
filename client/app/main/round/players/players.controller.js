@@ -3,8 +3,8 @@
 'use strict';
 
 angular.module('descentManagerApp')
-  .controller('PlayersCtrl', ['$scope', '$modal', 'Player', 'uiGridConstants', '$q', 'Alert',
-              function($scope, $modal, Player, uiGridConstants, $q, Alert) {
+  .controller('PlayersCtrl', ['$scope', '$modal', 'Player', 'uiGridConstants', '$q', 'Alert', 'dialogs',
+              function($scope, $modal, Player, uiGridConstants, $q, Alert, dialogs) {
     $scope.init = function() {
   		$scope.selectedTab = 0;
   		Player.list().
@@ -129,6 +129,40 @@ angular.module('descentManagerApp')
   				console.error('Error actualizando al jugador ' + jugador.alias + ': ' + response.data + ' (' + response.status + ')');
   			});
   	};
+
+    // Método que elimina una habilidad de un jugador
+    $scope.deleteHabilidad = function(jugador, index) {
+      var habilidad = jugador.Habilidads[index];
+      dialogs.confirm('Borrar habilidad', '¿Deseas borrar la habilidad "' + habilidad.nombre + '" del jugador "' + jugador.alias + '"?').
+        result.then(function(){
+          Alert.showLoader();
+          Player.deleteSkill(jugador.id, habilidad.id).
+            then(function(response){
+              $scope.init();
+              Alert.hideLoader();
+              Alert.showAlert('La habilidad se ha eliminado correctamente');
+            }, function(error){
+              console.error('Error borrando la habilidad ' + habilidad.id + ': ' + error.data + ' (' + error.status + ')');
+            });
+        });
+    };
+
+    // Método que elimina un objeto de un jugador
+    $scope.deleteObjeto = function(jugador, index) {
+      var objeto = jugador.Objetos[index];
+      dialogs.confirm('Borrar objeto', '¿Deseas borrar el objeto "' + objeto.nombre + '" del jugador "' + jugador.alias + '"?').
+        result.then(function(){
+          Alert.showLoader();
+          Player.deleteItem(jugador.id, objeto.id).
+            then(function(response){
+              $scope.init();
+              Alert.hideLoader();
+              Alert.showAlert('El objeto se ha eliminado correctamente');
+            }, function(error){
+              console.error('Error borrando el objeto ' + objeto.id + ': ' + error.data + ' (' + error.status + ')');
+            });
+        });
+    };
 
     // Se inicializa la vista de jugadores
   	$scope.init();

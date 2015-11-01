@@ -40,6 +40,18 @@ angular.module('descentManagerApp')
   				url: '/api/players',
   				data: jugador
   			});
-  		}
+  		},
+      deleteSkill: function(jugadorId, habilidadId) {
+        return $http({
+          method: 'DELETE',
+          url: '/api/players/' + jugadorId + '/skills/' + habilidadId,
+        });
+      },
+      deleteItem: function(jugadorId, objetoId) {
+        return $http({
+          method: 'DELETE',
+          url: '/api/players/' + jugadorId + '/items/' + objetoId,
+        });
+      }
 	};
 }]);

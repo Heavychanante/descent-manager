@@ -12,7 +12,8 @@ angular.module('descentManagerApp', [
   'ui.grid.autoResize',
   'ui.grid.resizeColumns',
   'ngAnimate',
-  'angularSpinners'
+  'angularSpinners',
+  'dialogs.main'
 ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $urlRouterProvider

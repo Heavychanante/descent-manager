@@ -40,4 +40,14 @@ describe('Service: Player', function () {
     var result = Player.update(jugador);
     expect(result).toBeDefined();
   });
+
+  it('debe eliminar un objeto a un jugador', function () {
+    var result = Player.deleteItem(1, 1);
+    expect(result).toBeDefined();
+  });
+
+  it('debe eliminar una habilidad a un jugador', function () {
+    var result = Player.deleteSkill(1, 1);
+    expect(result).toBeDefined();
+  });
 });

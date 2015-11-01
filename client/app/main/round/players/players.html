@@ -206,6 +206,7 @@
 										<th>Coste de experiencia</th>
 										<th>Cantidad</th>
 										<th>Descripción</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -215,6 +216,11 @@
 										<td ng-bind="habilidad.coste_experiencia"></td>
 										<td ng-bind="habilidad | getCantidad"></td>
 										<td ng-bind="habilidad.descripcion"></td>
+										<td>
+											<button type="button" class="btn btn-default btn-md pull-right" ng-click="deleteHabilidad(jugador, $index)">
+												<span class="glyphicon glyphicon-remove" aria-hidden="true" title="Borrar habilidad" style="color:red"></span>
+											</button>
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -236,6 +242,7 @@
 										<th>Número de manos</th>
 										<th>A distancia</th>
 										<th>Descripción</th>
+										<th></th>
 									</tr>
 								</thead>
 								<tbody>
@@ -246,6 +253,11 @@
 										<td ng-bind='objeto.manos'></td>
 										<td ng-bind='objeto.a_distancia | numberToBoolean'></td>
 										<td ng-bind='objeto.descripcion'></td>
+										<td>
+											<button type="button" class="btn btn-default btn-md pull-right" ng-click="deleteObjeto(jugador, $index)">
+												<span class="glyphicon glyphicon-remove" aria-hidden="true" title="Borrar objeto" style="color:red"></span>
+											</button>
+										</td>
 									</tr>
 								</tbody>
 							</table>

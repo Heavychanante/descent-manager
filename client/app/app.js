@@ -13,13 +13,41 @@ angular.module('descentManagerApp', [
   'ui.grid.resizeColumns',
   'ngAnimate',
   'angularSpinners',
-  'dialogs.main'
+  'dialogs.main',
+  'pascalprecht.translate'
 ])
-  .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(function($stateProvider, $urlRouterProvider, $locationProvider, dialogsProvider, $translateProvider) {
     $urlRouterProvider
       .otherwise('/');
 
     $locationProvider.html5Mode(true);
+
+    // Configuración de los diálogos de confirmación
+    dialogsProvider.useBackdrop('static');
+		dialogsProvider.useEscClose(false);
+		dialogsProvider.useCopy(false);
+		dialogsProvider.setSize('sm');
+
+		$translateProvider.translations('es-ES',{
+			DIALOGS_ERROR: "Error",
+			DIALOGS_ERROR_MSG: "Se ha producido un error desconocido.",
+			DIALOGS_CLOSE: "Cerrar",
+			DIALOGS_PLEASE_WAIT: "Espere por favor",
+			DIALOGS_PLEASE_WAIT_ELIPS: "Espere por favor...",
+			DIALOGS_PLEASE_WAIT_MSG: "Esperando en la operacion para completar.",
+			DIALOGS_PERCENT_COMPLETE: "% Completado",
+			DIALOGS_NOTIFICATION: "Notificacion",
+			DIALOGS_NOTIFICATION_MSG: "Notificacion de aplicacion Desconocido.",
+			DIALOGS_CONFIRMATION: "Confirmación",
+			DIALOGS_CONFIRMATION_MSG: "Se requiere confirmación.",
+			DIALOGS_OK: "Aceptar",
+			DIALOGS_YES: "Sí",
+			DIALOGS_NO: "No"
+		});
+
+    // Por defecto, indicamos como idioma 'es-ES'
+		$translateProvider.preferredLanguage('es-ES');
+    //$translate.use('es');
   })
 
   // Este método se ejecutará cada vez que cambie el estado de navegación

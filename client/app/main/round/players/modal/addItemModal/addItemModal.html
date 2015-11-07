@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h3 class="modal-title">Añadir Objeto</h3>
+  <h3 class="modal-title">{{ 'ADD_ITEM' | translate }}</h3>
 </div>
 <div class="modal-body">
   <div class="table-responsive" ng-show="currentItems.length > 0">
@@ -7,12 +7,12 @@
        <thead>
          <tr>
            <th></th>
-           <th>Nombre</th>
-           <th>Tipo</th>
-           <th>Precio</th>
-           <th>Número de manos</th>
-           <th>A distancia</th>
-           <th>Descripción</th>
+           <th>{{ 'NAME' | translate }}</th>
+           <th>{{ 'TYPE' | translate }}</th>
+           <th>{{ 'PRICE' | translate }}</th>
+           <th>{{ 'HANDS' | translate }}</th>
+           <th>{{ 'FROM_DISTANCE' | translate }}</th>
+           <th>{{ 'DESCRIPTION' | translate }}</th>
          </tr>
        </thead>
        <tbody>
@@ -36,12 +36,12 @@
      </table>
    </div>
    <div>
-     <p ng-hide="totalSize > 0">No hay objetos asignables al jugador</p>
+     <p ng-hide="totalSize > 0">{{ 'NO_ITEMS_TO_ADD' | translate }}</p>
    </div>
    <pagination total-items="totalSize" ng-model="currentPage" boundary-links="true" items-per-page="pageSize"
                rotate="false" max-size="15" ng-change="pageChanged()"></pagination>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-primary" type="button" ng-click="save()">Guardar</button>
-  <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+  <button class="btn btn-primary" type="button" ng-click="save()">{{ 'SAVE' | translate }}</button>
+  <button class="btn btn-warning" type="button" ng-click="cancel()">{{ 'CANCEL' | translate }}</button>
 </div>

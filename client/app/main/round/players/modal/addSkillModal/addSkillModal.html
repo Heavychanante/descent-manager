@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h3 class="modal-title">Añadir habilidad</h3>
+  <h3 class="modal-title">{{ 'ADD_SKILL' | translate }}</h3>
 </div>
 <div class="modal-body">
   <div class="table-responsive" ng-show="currentSkills.length > 0">
@@ -7,10 +7,10 @@
        <thead>
          <tr>
            <th></th>
-           <th>Nombre</th>
-           <th>Penalización</th>
-           <th>Coste de experiencia</th>
-           <th>Descripción</th>
+           <th>{{ 'NAME' | translate }}</th>
+           <th>{{ 'PENALIZATION' | translate }}</th>
+           <th>{{ 'EXPERIENCE_COST' | translate }}</th>
+           <th>{{ 'DESCRIPTION' | translate }}</th>
          </tr>
        </thead>
        <tbody>
@@ -32,12 +32,12 @@
      </table>
    </div>
    <div>
-     <p ng-hide="totalItems > 0">No hay habilidades asignables al jugador</p>
+     <p ng-hide="totalItems > 0">{{ 'NO_SKILLS_TO_ADD' | translate }}</p>
    </div>
    <pagination total-items="totalItems" ng-model="currentPage" boundary-links="true" items-per-page="pageSize"
                rotate="false" max-size="15" ng-change="pageChanged()"></pagination>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-primary" type="button" ng-click="save()">Guardar</button>
-  <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+  <button class="btn btn-primary" type="button" ng-click="save()">{{ 'SAVE' | translate }}</button>
+  <button class="btn btn-warning" type="button" ng-click="cancel()">{{ 'CANCEL' | translate }}</button>
 </div>

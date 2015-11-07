@@ -9,15 +9,15 @@
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane" ng-class="{active: $index == selectedTab}" ng-attr-id="#jugador{{jugador.id}}" ng-repeat="jugador in jugadores">
 						<h2 class="sub-header">
-							Información
-							<button type="button" class="btn btn-default pull-right" ng-click="updateJugador(jugador);">Guardar</button>
+							{{ 'INFO' | translate }}
+							<button type="button" class="btn btn-default pull-right" ng-click="updateJugador(jugador);">{{ 'SAVE' | translate }}</button>
 						</h2>
 
 						<div class="row">
 							<dl class="col-sm-2 col-md-2">
 								<div class="row">
 									<div class="col-md-4">
-										<label style="text-align: left; padding-left: 15px">Nombre:</label>
+										<label style="text-align: left; padding-left: 15px">{{ 'NAME' | translate }}:</label>
 									</div>
 									<div class="col-md-6">
 										<span ng-bind="jugador.Personaje.nombre"/>
@@ -27,7 +27,7 @@
 							<dl class="col-sm-2 col-md-2">
 								<div class="row">
 									<div class="col-md-5">
-										<label style="text-align: left; padding-left: 15px">Clase:</label>
+										<label style="text-align: left; padding-left: 15px">{{ 'CLASS' | translate }}:</label>
 									</div>
 									<div class="col-md-5">
 										<span ng-bind="jugador.Clase.nombre"/>
@@ -37,7 +37,7 @@
 							<dl class="col-sm-2 col-md-2">
 								<div class="row">
 									<div class="col-md-5">
-										<label style="text-align: left; padding-left: 15px">Velocidad:</label>
+										<label style="text-align: left; padding-left: 15px">{{ 'SPEED' | translate }}:</label>
 									</div>
 									<div class="col-md-5">
 										<span ng-bind="jugador.Personaje.velocidad"/>
@@ -47,7 +47,7 @@
 							<dl class="col-sm-2 col-md-2">
 								<div class="row">
 									<div class="col-md-3">
-										<label style="text-align: left; padding-left: 15px">Vida:</label>
+										<label style="text-align: left; padding-left: 15px">{{ 'LIFE' | translate }}:</label>
 									</div>
 									<div class="col-md-7">
 										<span ng-bind="jugador.Personaje.vida"/>
@@ -57,7 +57,7 @@
 							<dl class="col-sm-2 col-md-2">
 								<div class="row">
 									<div class="col-md-4">
-										<label style="text-align: left; padding-left: 15px">Aguante:</label>
+										<label style="text-align: left; padding-left: 15px">{{ 'STAMINA' | translate }}:</label>
 									</div>
 									<div class="col-md-6">
 										<span ng-bind="jugador.Personaje.aguante"/>
@@ -67,7 +67,7 @@
 							<dl class="col-sm-2 col-md-2">
 								<div class="row">
 									<div class="col-md-4">
-										<label style="text-align: left; padding-left: 15px">Defensa:</label>
+										<label style="text-align: left; padding-left: 15px">{{ 'DEFENSE' | translate }}:</label>
 									</div>
 									<div class="col-md-6">
 										<span ng-bind="jugador.Personaje.defensa"/>
@@ -80,7 +80,7 @@
 							<dl class="col-sm-2 col-md-2">
 								<div class="row">
 									<div class="col-md-4">
-										<label style="text-align: left; padding-left: 15px">Fuerza:</label>
+										<label style="text-align: left; padding-left: 15px">{{ 'STRENGTH' | translate }}:</label>
 									</div>
 									<div class="col-md-8">
 										<span ng-bind="jugador.Personaje.fuerza"/>
@@ -90,7 +90,7 @@
 							<dl class="col-sm-2 col-md-2">
 								<div class="row">
 									<div class="col-md-6">
-										<label style="text-align: left; padding-left: 15px">Conocimiento:</label>
+										<label style="text-align: left; padding-left: 15px">{{ 'KNOWLEDGE' | translate }}:</label>
 									</div>
 									<div class="col-md-6">
 										<span ng-bind="jugador.Personaje.conocimiento"/>
@@ -100,7 +100,7 @@
 							<dl class="col-sm-2 col-md-2">
 								<div class="row">
 									<div class="col-md-4">
-										<label style="text-align: left; padding-left: 15px">Voluntad:</label>
+										<label style="text-align: left; padding-left: 15px">{{ 'WILLPOWER' | translate }}:</label>
 									</div>
 									<div class="col-md-8">
 										<span ng-bind="jugador.Personaje.voluntad"/>
@@ -110,7 +110,7 @@
 							<dl class="col-sm-2 col-md-2">
 								<div class="row">
 									<div class="col-md-5">
-										<label style="text-align: left; padding-left: 15px">Percepción:</label>
+										<label style="text-align: left; padding-left: 15px">{{ 'PERCEPTION' | translate }}:</label>
 									</div>
 									<div class="col-md-7">
 										<span ng-bind="jugador.Personaje.percepcion"/>
@@ -118,14 +118,14 @@
 								</div>
 							</dl>
 							<dl class="col-sm-2 col-md-2">
-								<label style="text-align: left; padding-left: 15px">Capacidad</label>
+								<label style="text-align: left; padding-left: 15px">{{ 'ABILITY' | translate }}</label>
 								<span class="glyphicon glyphicon-info-sign" aria-hidden="true"
 									data-toggle="tooltip" data-placement="right"
 									title="{{jugador.Personaje.capacidad}}">
 								</span>
 							</dl>
 							<dl class="col-sm-2 col-md-2">
-								<label style="text-align: left; padding-left: 15px">Proeza</label>
+								<label style="text-align: left; padding-left: 15px">{{ 'FEAT' | translate }}</label>
 								<span class="glyphicon glyphicon-info-sign" aria-hidden="true"
 									data-toggle="tooltip" data-placement="right"
 									title="{{jugador.Personaje.proeza}}">
@@ -133,12 +133,12 @@
 							</dl>
 						</div>
 
-						<h2 class="sub-header">Atributos</h2>
+						<h2 class="sub-header">{{ 'ATTRIBUTES' | translate }}</h2>
 
 						<div class="row">
 							<div class="col-sm-2 col-md-2">
 								<div class="col-md-3" style="padding-top: 6px">
-									<label>Vida</label>
+									<label>{{ 'LIFE' | translate }}</label>
 								</div>
 								<div class="input-group col-md-7 btn-group" style="width: 55%">
 									<span class="input-group-btn">
@@ -152,7 +152,7 @@
 							</div>
 							<div class="col-md-2">
 								<div class="col-md-4" style="padding-top: 6px">
-									<label>Fatiga</label>
+									<label>{{ 'TIREDNESS' | translate }}</label>
 								</div>
 								<div class="input-group col-md-7 " style="width: 45%">
 									<span class="input-group-btn">
@@ -167,16 +167,16 @@
 
 							<div class="col-md-7 form-group" style="padding-top: 6px">
 								<div class="col-md-2">
-									<label>Aturdido</label> <input type="checkbox" ng-model="jugador.aturdido"></input>
+									<label>{{ 'STUNNED' | translate }}</label> <input type="checkbox" ng-model="jugador.aturdido"></input>
 								</div>
 								<div class="col-md-2">
-									<label>Enfermo</label> <input type="checkbox" ng-model="jugador.enfermo"></input>
+									<label>{{ 'ILL' | translate }}</label> <input type="checkbox" ng-model="jugador.enfermo"></input>
 								</div>
 								<div class="col-md-2">
-									<label>Envenenado</label> <input type="checkbox" ng-model="jugador.envenenado"></input>
+									<label>{{ 'POISONED' | translate }}</label> <input type="checkbox" ng-model="jugador.envenenado"></input>
 								</div>
 								<div class="col-md-2">
-									<label>Inmóvil</label> <input type="checkbox" ng-model="jugador.inmovil"></input>
+									<label>{{ 'IMMOBILE' | translate }}</label> <input type="checkbox" ng-model="jugador.inmovil"></input>
 								</div>
 							</div>
 
@@ -184,28 +184,28 @@
 
 						<div class="row">
 							<div class="col-md-2" style="padding-left: 30px">
-								<label>Proeza</label> <input type="checkbox" ng-model="jugador.proeza"></input>
+								<label>{{ 'FEAT' | translate }}</label> <input type="checkbox" ng-model="jugador.proeza"></input>
 							</div>
 							<div class="col-md-2" style="padding-left: 30px">
-								<label>Oro</label> <input type="number" min="0" ng-model="jugador.oro"></input>
+								<label>{{ 'GOLD' | translate }}</label> <input type="number" min="0" ng-model="jugador.oro"></input>
 							</div>
 							<div class="col-md-8" style="padding-left: 30px">
-								<label>Experiencia</label> <input type="number" min="0" ng-model="jugador.experiencia"></input>
+								<label>{{ 'EXPERIENCE' | translate }}</label> <input type="number" min="0" ng-model="jugador.experiencia"></input>
 							</div>
 						</div>
 
-						<h2 class="sub-header">Habilidades</h2>
+						<h2 class="sub-header">{{ 'SKILLS' | translate }}</h2>
 
 
 						<div class="table-responsive">
 							<table class="table table-striped table-bordered text-center">
 								<thead>
 									<tr>
-										<th>Nombre</th>
-										<th>Penalización</th>
-										<th>Coste de experiencia</th>
-										<th>Cantidad</th>
-										<th>Descripción</th>
+										<th>{{ 'NAME' | translate }}</th>
+										<th>{{ 'PENALIZATION' | translate }}</th>
+										<th>{{ 'EXPERIENCE_COST' | translate }}</th>
+										<th>{{ 'QUANTITY' | translate }}</th>
+										<th>{{ 'DESCRIPTION' | translate }}</th>
 										<th></th>
 									</tr>
 								</thead>
@@ -218,7 +218,7 @@
 										<td ng-bind="habilidad.descripcion"></td>
 										<td>
 											<button type="button" class="btn btn-default btn-md pull-right" ng-click="deleteHabilidad(jugador, $index)">
-												<span class="glyphicon glyphicon-remove" aria-hidden="true" title="Borrar habilidad" style="color:red"></span>
+												<span class="glyphicon glyphicon-remove" aria-hidden="true" title="{{ 'DELETE_SKILL' | translate }}" style="color:red"></span>
 											</button>
 										</td>
 									</tr>
@@ -227,21 +227,21 @@
 						</div>
 
 						<button type="button" class="btn btn-default btn-md pull-right" ng-click="openSkillModal(jugador)">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true" title="Añadir habilidad"></span>
+							<span class="glyphicon glyphicon-plus" aria-hidden="true" title="{{ 'ADD_SKILL' | translate }}"></span>
 						</button>
 
-						<h2 class="sub-header">Objetos</h2>
+						<h2 class="sub-header">{{ 'ITEMS' | translate }}</h2>
 
 						<div class="table-responsive">
 							<table class="table table-striped table-bordered text-center">
 								<thead>
 									<tr>
-										<th>Nombre</th>
-										<th>Tipo</th>
-										<th>Precio</th>
-										<th>Número de manos</th>
-										<th>A distancia</th>
-										<th>Descripción</th>
+										<th>{{ 'NAME' | translate }}</th>
+										<th>{{ 'TYPE' | translate }}</th>
+										<th>{{ 'PRICE' | translate }}</th>
+										<th>{{ 'HANDS' | translate }}</th>
+										<th>{{ 'FROM_DISTANCE' | translate }}</th>
+										<th>{{ 'DESCRIPTION' | translate }}</th>
 										<th></th>
 									</tr>
 								</thead>
@@ -255,7 +255,7 @@
 										<td ng-bind='objeto.descripcion'></td>
 										<td>
 											<button type="button" class="btn btn-default btn-md pull-right" ng-click="deleteObjeto(jugador, $index)">
-												<span class="glyphicon glyphicon-remove" aria-hidden="true" title="Borrar objeto" style="color:red"></span>
+												<span class="glyphicon glyphicon-remove" aria-hidden="true" title="{{ 'DELETE_ITEM' | translate }}" style="color:red"></span>
 											</button>
 										</td>
 									</tr>
@@ -264,7 +264,7 @@
 						</div>
 
 						<button type="button" class="btn btn-default btn-md pull-right" ng-click="openItemModal(jugador)">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true" title="Añadir objeto"></span>
+							<span class="glyphicon glyphicon-plus" aria-hidden="true" title="{{ 'ADD_ITEM' | translate }}"></span>
 						</button>
 
 					</div>

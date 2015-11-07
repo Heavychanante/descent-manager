@@ -2,11 +2,11 @@
   <div class="container">
     <form class="form-horizontal">
       <div class="form-group">
-        <h2 class="form-signin-heading">Nueva partida</h2>
+        <h2 class="form-signin-heading">{{ 'NEW_GAME' | translate }}</h2>
       </div>
       <div class="form-group">
         <!--<label for="gameName" class="control-label" required autofocus>Nombre</label>-->
-        <input type="text" class="form-control" id="gameName" placeholder="Nombre" ng-model="newGame.name">
+        <input type="text" class="form-control" id="gameName" placeholder="{{ 'NAME' | translate }}" ng-model="newGame.name">
       </div>
       <div class="form-group">
         <div class="list-group">
@@ -14,12 +14,12 @@
               <span class="glyphicon glyphicon-remove pull-right"></span>
           </a>
           <button type="button" class="btn btn-default btn-md pull-right" ng-click="addPlayer()" ng-show="newGame.players.length < 4">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true" title="Añadir jugador"></span>
+            <span class="glyphicon glyphicon-plus" aria-hidden="true" title="{{ 'ADD_PLAYER' | translate }}"></span>
           </button>
         </div>
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-default">Guardar</button>
+        <button type="submit" class="btn btn-default">{{ 'SAVE' | translate }}</button>
       </div>
     </form>
   </div>

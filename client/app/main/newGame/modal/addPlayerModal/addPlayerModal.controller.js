@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('descentManagerApp')
-  .controller('AddPlayerModalCtrl', function ($scope, $modalInstance) {
-    $scope.message = 'Hello';
+  .controller('AddPlayerModalCtrl', function ($scope, $modalInstance, Class, Character) {
 
     $scope.save = function () {
       //$modalInstance.close();

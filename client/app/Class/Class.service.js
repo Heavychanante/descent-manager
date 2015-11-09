@@ -9,6 +9,13 @@ angular.module('descentManagerApp')
                   method: 'GET',
                   url: '/api/classes/'
               });
+      },
+      // Método que devuelve las clases asociadas a un arquetipo
+      getClassesByArchetype: function (archetype_id) {
+        return $http({
+                  method: 'GET',
+                  url: '/api/classes/archetype/' + archetype_id
+              });
       }
     };
   }]);

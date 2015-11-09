@@ -1,0 +1,6 @@
+input_player.ng-invalid {
+  border: 1px solid red;
+}
+input_player.ng-valid {
+  border: 1px solid green;
+}

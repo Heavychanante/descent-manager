@@ -6,13 +6,16 @@
       </div>
       <div class="form-group">
         <!--<label for="gameName" class="control-label" required autofocus>Nombre</label>-->
-        <input type="text" class="form-control" id="gameName" placeholder="{{ 'NAME' | translate }}" ng-model="newGame.name">
+        <input type="text" class="form-control" id="gameName" placeholder="{{ 'NAME' | translate }}" ng-model="newGame.name" required>
       </div>
       <div class="form-group">
         <div class="list-group">
-          <a href="#" class="list-group-item" ng-repeat="player in newGame.players">
-              <span class="glyphicon glyphicon-remove pull-right"></span>
-          </a>
+          <div style="padding-bottom:3px">
+            <a href="#" class="list-group-item" ng-repeat="player in newGame.players">
+                <span class="glyphicon glyphicon-remove pull-right" ng-click="deletePlayer($index)"></span>
+                {{player.alias}} - {{player.personaje.nombre}} - {{player.clase.nombre}}
+            </a>
+          </div>
           <button type="button" class="btn btn-default btn-md pull-right" ng-click="addPlayer()" ng-show="newGame.players.length < 4">
             <span class="glyphicon glyphicon-plus" aria-hidden="true" title="{{ 'ADD_PLAYER' | translate }}"></span>
           </button>

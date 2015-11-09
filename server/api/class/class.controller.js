@@ -18,3 +18,15 @@ exports.index = function(req, res) {
       res.status(500).end();
     })
 };
+
+// Get classes by archetype
+exports.getClassesByArchetype = function(req, res) {
+  Clase.findAll({ include: [{ model: Arquetipo }],
+                  where: {arquetipo_id : req.params.id}})
+    .then(function(clases) {
+      res.json(clases);
+    }, function(error){
+      console.log("Clase.findAll() -> " + error);
+      res.status(500).end();
+    })
+};

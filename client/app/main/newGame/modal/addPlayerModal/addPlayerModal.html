@@ -2,8 +2,26 @@
   <h3 class="modal-title">{{ 'ADD_PLAYER' | translate }}</h3>
 </div>
 <div class="modal-body">
+  <form>
+    <div class="form-group">
+      <label for="player_name">{{ 'NAME' | translate }}</label>
+      <input type="text" class="form-control input_player" id="player_name" ng-model="alias" placeholder="{{ 'NAME' | translate }}" required>
+    </div>
+    <div class="form-group">
+      <label for="player_character">{{ 'CHARACTER' | translate }}</label>
+      <select id="player_character" class="form-control" ng-model="personaje_id" ng-change="selectClasses(personaje_id)">
+        <option ng-repeat="personaje in personajes" value="{{personaje.id}}">{{personaje.nombre}}</option>
+      </select>
+    </div>
+    <div class="form-group" ng-show="showClasses">
+      <label for="player_archetype">{{ 'CLASS' | translate }}</label>
+      <select id="player_archetype" class="form-control" ng-model="clase_id" ng-change="selectClass(clase_id)">
+        <option ng-repeat="clase in clases" value="{{clase.id}}">{{clase.nombre}}</option>
+      </select>
+    </div>
+  </form>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-primary" type="button" ng-click="save()">{{ 'SAVE' | translate }}</button>
+  <button class="btn btn-primary" type="button" ng-disabled="alias.length < 1 || personaje_id == 0 || clase_id == 0" ng-click="save()">{{ 'SAVE' | translate }}</button>
   <button class="btn btn-warning" type="button" ng-click="cancel()">{{ 'CANCEL' | translate }}</button>
 </div>

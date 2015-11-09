@@ -138,7 +138,9 @@ var es = {
   NO_SKILLS_TO_ADD: 'No hay habilidades asignables al jugador',
   NEW_GAME: 'Nueva partida',
   GAME: 'Partida',
-  ADD_PLAYER: 'Añadir jugador'
+  ADD_PLAYER: 'Añadir jugador',
+  ARCHETYPE: 'Arquetipo',
+  CHARACTER: 'Personaje'
 };
 
 var en = {
@@ -195,5 +197,7 @@ var en = {
   NO_SKILLS_TO_ADD: 'There are no skills to add',
   NEW_GAME: 'New game',
   GAME: 'Game',
-  ADD_PLAYER: 'Add player'
+  ADD_PLAYER: 'Add player',
+  ARCHETYPE: 'Archetype',
+  CHARACTER: 'Character'
 };

@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('descentManagerApp')
-  .controller('NewGameCtrl', function ($scope, $modal, Alert, Game) {
+  .controller('NewGameCtrl', function ($scope, $modal, Alert, Game, $rootScope) {
     $scope.newGame = {
       name: '',
+      user: $rootScope.currentUser,
       players: []
     };
 
@@ -37,11 +38,12 @@ angular.module('descentManagerApp')
     $scope.save = function() {
       Alert.showLoader();
       Game.createGame($scope.newGame)
-        .then(function(response){
+        .then(function(response) {
             Alert.hideLoader();
             Alert.showAlert('La partida se ha creado correctamente');
-          }, function(response) {
-            console.log('Error creando lo partida');
+          }, function(error) {
+            Alert.hideLoader();
+            Alert.showAlert('Error inesperado creando la partida');
           });
     };
 

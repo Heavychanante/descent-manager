@@ -15,6 +15,7 @@ module.exports = function(app, passport) {
   //app.use('/api/*', auth.auth);
 
   // Insert routes below
+  app.use('/api/games', require('./api/game'));
   app.use('/api/characters', require('./api/character'));
   app.use('/api/classes', require('./api/class'));
   app.use('/api/items', require('./api/item'));

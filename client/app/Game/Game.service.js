@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('descentManagerApp')
-  .factory('Game', function () {
+  .factory('Game', function ($http) {
     return {
       // Método que crea una nueva partida
       createGame: function (partida) {

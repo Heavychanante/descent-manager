@@ -17,6 +17,13 @@ angular.module('descentManagerApp')
   				url: '/api/players/' + id
   			});
   		},
+      // Método que devuelve el listado de jugadores de una partida
+  		getGamePlayers : function(game_id) {
+  			return $http({
+  				method:'GET',
+  				url: '/api/players/game/' + game_id
+  			});
+  		},
       // Método que añade una habilidad a un jugador
   		setSkill: function (jugadorId, habilidad){
   			return $http({

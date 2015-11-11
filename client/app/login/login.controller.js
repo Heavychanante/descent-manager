@@ -15,7 +15,7 @@ angular.module('descentManagerApp')
             $scope.alert = false;
             $scope.alertClass = '';
             $scope.alertMessage = '';
-            $state.go('main');
+            $state.go('main.games');
           }, function(response){
             if (response.status === 401) {
               $scope.alertClass = 'alert-danger';

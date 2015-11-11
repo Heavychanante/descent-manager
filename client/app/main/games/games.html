@@ -1,1 +1,35 @@
-<div>This is the games view.</div>
+<div class="container-fluid main">
+  <div class="container">
+    <h2 class="form-signin-heading">{{ 'MY_GAMES' | translate }}</h2>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>{{ 'NAME' | translate }}</th>
+            <th>{{ 'CREATION_TIME' | translate }}</th>
+            <th>{{ 'LAST_MODIFICATION' | translate }}</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="partida in partidas">
+            <td ng-bind="partida.nombre"></td>
+            <td ng-bind="partida.creacion"></td>
+            <td ng-bind="partida.modificacion"></td>
+            <td>
+              <button type="button" class="btn btn-default btn-md pull-right" ng-click="deleteHabilidad(jugador, $index)">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true" title="{{ 'DELETE_GAME' | translate }}" style="color:red"></span>
+              </button>
+              <a ui-sref="main.round({id: partida.id})">
+                <button type="button" class="btn btn-default btn-md pull-right">
+                  <span class="glyphicon glyphicon-share-alt" aria-hidden="true" title="{{ 'GOT_TO_GAME' | translate }}"style="color:green"></span>
+                </button>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

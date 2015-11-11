@@ -10,6 +10,13 @@ angular.module('descentManagerApp')
   				url: '/api/games/',
   				data: partida
   			});
+      },
+      // Método que devuelve las partidas creadas por un jugador
+      getUserGames: function (usuario_id) {
+        return $http({
+  				method: 'GET',
+  				url: '/api/games/user/' + usuario_id
+  			});
       }
     };
   });

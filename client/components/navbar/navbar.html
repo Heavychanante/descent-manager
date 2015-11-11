@@ -12,22 +12,14 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a ui-sref="main.newGame">{{ 'NEW_GAME' | translate }}</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a ui-sref="main.round">{{ 'GAME' | translate }}</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a>{{ 'LOGGED_USER' | translate }}: {{currentUser.nombre}}</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
 				<li><a ng-click="logout()">{{ 'LOGOUT' | translate }}</a></li>
 			</ul>
-			<!--
 			<ul class="nav navbar-nav navbar-right">
-				<li><a ng-click="toggleESEN()">Cambiar idioma</a></li>
+				<li><a ui-sref="main.games">{{ 'MY_GAMES' | translate }}</a></li>
 			</ul>
-			-->
+			<ul class="nav navbar-nav navbar-right">
+				<li><a ui-sref="main.newGame">{{ 'NEW_GAME' | translate }}</a></li>
+			</ul>
 		</div>
   </div>
 </nav>

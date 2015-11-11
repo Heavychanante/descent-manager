@@ -83,10 +83,22 @@ exports.createGame = function(req, res) {
       });
     }
 
-    // Si todo ha ido Ok, se devuelve la respuesta
-    res.status(200).end();
+    // Si todo ha ido Ok, se devuelve el identificador de la partida creada
+    res.status(200).send({id: partida.id});
   }, function(error) {
     console.log("Partida.create() -> ERROR = " + error);
     res.status(500).end();
   });
+};
+
+// Find games by user
+exports.getUserGames = function(req, res) {
+  Partida.findAll({ include: [{all : true}],
+                    where: {usuario_id: req.params.id} })
+    .then(function(partidas) {
+      res.json(partidas);
+    }, function(error){
+      console.log("Partida.findAll() -> ERROR = " + error);
+      res.status(500).end();
+    });
 };

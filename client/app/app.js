@@ -140,7 +140,12 @@ var es = {
   GAME: 'Partida',
   ADD_PLAYER: 'Añadir jugador',
   ARCHETYPE: 'Arquetipo',
-  CHARACTER: 'Personaje'
+  CHARACTER: 'Personaje',
+  MY_GAMES: 'Mis partidas',
+  CREATION_TIME: 'Fecha de creación',
+  LAST_MODIFICATION: 'Última modificación',
+  GOT_TO_GAME: 'Ir a la partida',
+  DELETE_GAME: 'Borrar partida'
 };
 
 var en = {
@@ -199,5 +204,10 @@ var en = {
   GAME: 'Game',
   ADD_PLAYER: 'Add player',
   ARCHETYPE: 'Archetype',
-  CHARACTER: 'Character'
+  CHARACTER: 'Character',
+  MY_GAMES: 'My games',
+  CREATION_TIME: 'Creation time',
+  LAST_MODIFICATION: 'Last modification',
+  GOT_TO_GAME: 'Go to game',
+  DELETE_GAME: 'Delete game'
 };

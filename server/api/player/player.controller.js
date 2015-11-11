@@ -38,6 +38,18 @@ exports.findById = function(req, res) {
     });
 };
 
+// Players of a game
+exports.getGamePlayers = function(req, res) {
+  Jugador.findAll({ include: [{all : true}],
+                    where: {partida_id: req.params.id} })
+    .then(function(jugadores) {
+      res.json(jugadores);
+    }, function(error){
+      console.log("Jugador.findAll() -> ERROR = " + error);
+      res.status(500).end();
+    });
+};
+
 // Put new skill to player
 exports.setSkill = function(req, res) {
   JugadorHabilidad.findAll({ include: [{all : true}],

@@ -5,6 +5,11 @@ angular.module('descentManagerApp')
     $stateProvider
       .state('main.round.players', {
         url: '/players',
+        params: {
+           game_id: {
+             value: ''
+           }
+        },
         templateUrl: 'app/main/round/players/players.html',
         controller: 'PlayersCtrl'
       });

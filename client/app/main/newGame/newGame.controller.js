@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('descentManagerApp')
-  .controller('NewGameCtrl', function ($scope, $modal, Alert, Game, $rootScope) {
+  .controller('NewGameCtrl', function ($scope, $modal, Alert, Game, $rootScope, $state) {
     $scope.newGame = {
       name: '',
       user: $rootScope.currentUser,
@@ -41,9 +41,10 @@ angular.module('descentManagerApp')
         .then(function(response) {
             Alert.hideLoader();
             Alert.showAlert('La partida se ha creado correctamente');
+            $state.go('main.round', {id: response.data.id});
           }, function(error) {
             Alert.hideLoader();
-            Alert.showAlert('Error inesperado creando la partida');
+            Alert.showAlert('Error inesperado creando la partida', 'error');
           });
     };
 

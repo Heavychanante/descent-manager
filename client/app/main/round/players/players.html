@@ -1,4 +1,4 @@
-		    <div class="alert alert-success sample-show-hide" ng-show="showAlertMessage">{{alertMessage}}</div>
+		    <div class="alert alert-success sample-show-hide" ng-class="(alertMessageStyle == 'error')? alert-error : alert-success" ng-show="showAlertMessage">{{alertMessage}}</div>
 
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" ng-repeat="jugador in jugadores" ng-class="{active: $index == selectedTab}" ng-click="setSelected($index)">

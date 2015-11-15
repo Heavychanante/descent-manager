@@ -15,10 +15,10 @@
         <tbody>
           <tr ng-repeat="partida in partidas">
             <td ng-bind="partida.nombre"></td>
-            <td ng-bind="partida.creacion"></td>
-            <td ng-bind="partida.modificacion"></td>
+            <td ng-bind="partida.creacion | date : 'dd-MM-yyyy HH:mm'"></td>
+            <td ng-bind="partida.modificacion | date : 'dd-MM-yyyy HH:mm'"></td>
             <td>
-              <button type="button" class="btn btn-default btn-md pull-right" ng-click="deleteHabilidad(jugador, $index)">
+              <button type="button" class="btn btn-default btn-md pull-right" ng-click="deleteGame(partida)">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true" title="{{ 'DELETE_GAME' | translate }}" style="color:red"></span>
               </button>
               <a ui-sref="main.round({id: partida.id})">

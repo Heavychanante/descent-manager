@@ -26,6 +26,7 @@ module.exports = function(config) {
       'client/bower_components/angular-translate/angular-translate.js',
       'client/bower_components/angular-dialog-service/dist/dialogs.min.js',
       'client/bower_components/angular-dialog-service/dist/dialogs-default-translations.min.js',
+      'client/bower_components/ngEmbed/src/ng-embed.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'client/app/app.js',

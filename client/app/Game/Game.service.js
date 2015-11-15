@@ -12,11 +12,18 @@ angular.module('descentManagerApp')
   			});
       },
       // Método que devuelve las partidas creadas por un jugador
-      getUserGames: function (usuario_id) {
+      getUserGames: function (usuarioId) {
         return $http({
   				method: 'GET',
-  				url: '/api/games/user/' + usuario_id
+  				url: '/api/games/user/' + usuarioId
   			});
+      },
+      // Método que elimina una partida
+      deleteGame: function(partidaId) {
+        return $http({
+          method: 'DELETE',
+          url: '/api/games/' + partidaId
+        });
       }
     };
   });

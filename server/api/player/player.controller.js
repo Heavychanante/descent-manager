@@ -201,8 +201,6 @@ exports.deleteSkill = function(req, res) {
 
 // Delete an item from the player
 exports.deleteItem = function(req, res) {
-  console.log(req.params.jugadorId);
-  console.log(req.params.objetoId);
   JugadorObjeto.findAll({ include: [{all : true}],
                               where: {
                                 jugador_id : req.params.jugadorId,

@@ -8,7 +8,7 @@ angular.module('descentManagerApp')
     $scope.init = function() {
   		$scope.selectedTab = 0;
       $scope.partida_id = $stateParams.game_id;
-      console.log('JUGADORES = ' + $scope.partida_id);
+
   		Player.getGamePlayers($scope.partida_id).
   			then(function(response) {
   				$scope.jugadores = response.data;

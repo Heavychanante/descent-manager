@@ -1,6 +1,7 @@
 'use strict';
 
 var _     = require('lodash');
+var q     = require('q');
 var sqldb = require('../../sqldb');
 var config = require('../../config/environment');
 
@@ -9,6 +10,7 @@ var Partida          = sqldb.Partida;
 var Jugador          = sqldb.Jugador;
 var Habilidad        = sqldb.Habilidad;
 var JugadorHabilidad = sqldb.JugadorHabilidad;
+var JugadorObjeto    = sqldb.JugadorObjeto;
 var AventuraPartida  = sqldb.AventuraPartida;
 
 // Get list of games
@@ -94,11 +96,90 @@ exports.createGame = function(req, res) {
 // Find games by user
 exports.getUserGames = function(req, res) {
   Partida.findAll({ include: [{all : true}],
-                    where: {usuario_id: req.params.id} })
+                    where: {usuario_id: req.params.id},
+                    order: 'modificacion desc'})
     .then(function(partidas) {
       res.json(partidas);
     }, function(error){
       console.log("Partida.findAll() -> ERROR = " + error);
+      res.status(500).end();
+    });
+};
+
+// Delete a game
+exports.deleteGame = function(req, res) {
+  var jugadorHabilidadPromises = [];
+  var jugadorObjetoPromises    = [];
+  var jugadorPromises          = [];
+
+  // Se eliminan los jugadores de la partida
+  Jugador.findAll({where: {partida_id: req.params.id}})
+    .then(function(jugadores) {
+      if (jugadores.length == 0) {
+        // Se borran las aventuras de la partida
+        AventuraPartida.destroy({ where: {partida_id: req.params.id} })
+          .then(function(){
+            // Finalmente se borra la partida
+            Partida.destroy({ where: {id: req.params.id} })
+              .then(function() {
+                // Borrado Ok
+                res.status(200).end();
+              }, function(error) {
+                console.log("Partida.destroy() -> ERROR = " + error);
+                res.status(500).end();
+              });
+          }, function(error) {
+            console.log("AventuraPartida.destroy() -> ERROR = " + error);
+            res.status(500).end();
+          });
+      } else {
+        for (var i=0; i < jugadores.length; i++) {
+          // Se borran las habilidades
+          var jugadorHabilidadPromise = JugadorHabilidad.destroy({ where: {jugador_id : jugadores[i].id} });
+          jugadorHabilidadPromises.push(jugadorHabilidadPromise);
+
+          // Se borran los objetos
+          var jugadorObjetoPromise = JugadorObjeto.destroy({ where: {jugador_id : jugadores[i].id} });
+          jugadorObjetoPromises.push(jugadorObjetoPromise);
+
+          // Se borra el Jugador
+          var jugadorPromise = jugadores[i].destroy({ where: {id: jugadores[i].id} });
+          jugadorPromises.push(jugadorPromise);
+        }
+
+        var all = [];
+        all.push(q.all(jugadorHabilidadPromises));
+        all.push(q.all(jugadorObjetoPromises));
+        q.all(all).then(function() {
+          q.all(jugadorPromises).then(function() {
+              // Se borran las aventuras de la partida
+              AventuraPartida.destroy({ where: {partida_id: req.params.id} })
+                .then(function(){
+                  // Finalmente se borra la partida
+                  Partida.destroy({ where: {id: req.params.id} })
+                    .then(function() {
+                      // Borrado Ok
+                      res.status(200).end();
+                    }, function(error) {
+                      console.log("Partida.destroy() -> ERROR = " + error);
+                      res.status(500).end();
+                    });
+                }, function(error) {
+                  console.log("AventuraPartida.destroy() -> ERROR = " + error);
+                  res.status(500).end();
+                });
+            }, function(error) {
+              console.log("Jugador.destroy() -> ERROR = " + error);
+              res.status(500).end();
+            });
+        }, function(error){
+          console.log("JugadorHabilidad.destroy() & JugadorObjeto.destroy() -> ERROR = " + error);
+          res.status(500).end();
+        })
+      }
+
+    }, function(error){
+      console.log("Jugador.findAll() -> ERROR = " + error);
       res.status(500).end();
     });
 };

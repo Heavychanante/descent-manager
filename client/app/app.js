@@ -14,7 +14,8 @@ angular.module('descentManagerApp', [
   'ngAnimate',
   'angularSpinners',
   'dialogs.main',
-  'pascalprecht.translate'
+  'pascalprecht.translate',
+  'ngEmbed'
 ])
   .config(function($stateProvider, $urlRouterProvider, $locationProvider, dialogsProvider, $translateProvider) {
     $urlRouterProvider.otherwise('/');

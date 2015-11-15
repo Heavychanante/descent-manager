@@ -215,7 +215,7 @@
 										<td ng-bind="habilidad.penalizacion"></td>
 										<td ng-bind="habilidad.coste_experiencia"></td>
 										<td ng-bind="habilidad | getCantidad"></td>
-										<td ng-bind="habilidad.descripcion"></td>
+										<td ng-bind-html="habilidad.descripcion | embed"></td>
 										<td>
 											<button type="button" class="btn btn-default btn-md pull-right" ng-click="deleteHabilidad(jugador, $index)">
 												<span class="glyphicon glyphicon-remove" aria-hidden="true" title="{{ 'DELETE_SKILL' | translate }}" style="color:red"></span>
@@ -252,7 +252,7 @@
 										<td ng-bind='objeto.precio'></td>
 										<td ng-bind='objeto.manos'></td>
 										<td ng-bind='objeto.a_distancia | numberToBoolean'></td>
-										<td ng-bind='objeto.descripcion'></td>
+										<td ng-bind-html='objeto.descripcion | embed'></td>
 										<td>
 											<button type="button" class="btn btn-default btn-md pull-right" ng-click="deleteObjeto(jugador, $index)">
 												<span class="glyphicon glyphicon-remove" aria-hidden="true" title="{{ 'DELETE_ITEM' | translate }}" style="color:red"></span>

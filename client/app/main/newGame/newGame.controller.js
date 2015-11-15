@@ -41,7 +41,7 @@ angular.module('descentManagerApp')
         .then(function(response) {
             Alert.hideLoader();
             Alert.showAlert('La partida se ha creado correctamente');
-            $state.go('main.round', {id: response.data.id});
+            $state.go('main.games');
           }, function(error) {
             Alert.hideLoader();
             Alert.showAlert('Error inesperado creando la partida', 'error');

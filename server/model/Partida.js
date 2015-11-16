@@ -10,6 +10,11 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
+    activa: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: '0'
+    },
     creacion: {
       type: DataTypes.DATE,
       allowNull: false,

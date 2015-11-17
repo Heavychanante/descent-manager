@@ -2,13 +2,15 @@
 
 // Development specific configuration
 // ==================================
+
+
 module.exports = {
   // MongoDB connection options
   mongo: {
     uri: 'mongodb://localhost/descentmanager-dev'
   },
   sequelize: {
-    uri: 'mysql://pruebas:pruebas@localhost:3306/descentmanager',
+    uri: (process.env.OPENSHIFT_MYSQL_DB_URL) ? process.env.OPENSHIFT_MYSQL_DB_URL + '/descentmanager' : 'mysql://pruebas:pruebas@localhost:3306/descentmanager',
     options: {
       logging: false,
       define: {
@@ -18,13 +20,6 @@ module.exports = {
   },
 
   seedDB: true,
-
-  mysql: {
-    host     : 'localhost',
-    port     : '3306',
-    user     : 'pruebas',
-    password : 'pruebas'
-  },
 
   secrets: {
     encryptionPassword: "encryptdev"

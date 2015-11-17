@@ -24,7 +24,7 @@ module.exports = {
 
   // MySQL connection options
   sequelize: {
-    uri: 'mysql://pruebas:pruebas@localhost:3306/descentmanager',
+    uri: process.env.OPENSHIFT_MYSQL_DB_URL + '/descentmanager',
     options: {
       logging: false,
       define: {

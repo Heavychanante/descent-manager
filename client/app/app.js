@@ -146,7 +146,8 @@ var es = {
   CREATION_TIME: 'Fecha de creación',
   LAST_MODIFICATION: 'Última modificación',
   GOT_TO_GAME: 'Ir a la partida',
-  DELETE_GAME: 'Borrar partida'
+  DELETE_GAME: 'Borrar partida',
+  ACTS: 'Actos'
 };
 
 var en = {
@@ -210,5 +211,6 @@ var en = {
   CREATION_TIME: 'Creation time',
   LAST_MODIFICATION: 'Last modification',
   GOT_TO_GAME: 'Go to game',
-  DELETE_GAME: 'Delete game'
+  DELETE_GAME: 'Delete game',
+  ACTS: 'Acts'
 };

@@ -29,14 +29,16 @@ exports.createGame = function(req, res) {
   var gameName    = req.body.name;
   var gameUser    = req.body.user;
   var gamePlayers = req.body.players;
-
+  console.log(gameName);
+  console.log(gameUser);
+  console.log(gamePlayers);
   // Primero se crea la partida
   Partida.create({
     nombre: gameName,
     usuario_id: gameUser.id,
     activa: '1'
   }).then(function(partida) {
-
+    console.log("Partida = " + partida);
     // Una vez creada la partida se asocia a la primera aventura
     AventuraPartida.create({
       aventura_id: 1, // Por defecto se juega la aventura "Primera Sangre"

@@ -1,0 +1,9 @@
+.actBorderNoBottom {
+	border-top: ridge;
+	border-right: ridge;
+	border-left: ridge;
+}
+
+.actBorder {
+	border: ridge;
+}

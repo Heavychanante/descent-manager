@@ -147,7 +147,7 @@ var es = {
   LAST_MODIFICATION: 'Última modificación',
   GOT_TO_GAME: 'Ir a la partida',
   DELETE_GAME: 'Borrar partida',
-  ACTS: 'Actos'
+  ADVENTURES: 'Aventuras'
 };
 
 var en = {
@@ -212,5 +212,5 @@ var en = {
   LAST_MODIFICATION: 'Last modification',
   GOT_TO_GAME: 'Go to game',
   DELETE_GAME: 'Delete game',
-  ACTS: 'Acts'
+  ADVENTURES: 'Adventures'
 };

@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Controller: ActsCtrl', function () {
+describe('Controller: AdventuresCtrl', function () {
 
   // load the controller's module
   beforeEach(module('descentManagerApp'));
 
-  var ActsCtrl, scope;
+  var AdventuresCtrl, scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    ActsCtrl = $controller('ActsCtrl', {
+    AdventuresCtrl = $controller('AdventuresCtrl', {
       $scope: scope
     });
   }));

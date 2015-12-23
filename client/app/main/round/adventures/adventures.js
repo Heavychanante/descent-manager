@@ -3,14 +3,14 @@
 angular.module('descentManagerApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('main.round.acts', {
-        url: '/acts',
+      .state('main.round.adventures', {
+        url: '/adventures',
         params: {
            game_id: {
              value: ''
            }
         },
-        templateUrl: 'app/main/round/acts/acts.html',
-        controller: 'ActsCtrl'
+        templateUrl: 'app/main/round/adventures/adventures.html',
+        controller: 'AdventuresCtrl'
       });
   });

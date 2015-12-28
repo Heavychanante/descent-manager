@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('descentManagerApp')
-  .controller('AdventuresCtrl', function ($scope, $stateParams, Adventure) {
+  .controller('AdventuresCtrl', function ($scope, $stateParams, Adventure, Alert) {
     $scope.init = function() {
   		$scope.partida_id = $stateParams.game_id;
   		Adventure.getGameAdventures($scope.partida_id)
@@ -56,6 +56,7 @@ angular.module('descentManagerApp')
                 i++;
                 nuevaAventura = $scope.aventuras[i];
                 nuevaAventura.ganada = null;
+                nuevaAventura.activa = false;
                 for (var k=0; k < $scope.aventurasPartida.length; k++) {
                   if ($scope.aventurasPartida[k].aventura_id == $scope.aventuras[i].id) {
                     if ($scope.aventurasPartida[k].ganadores == 1) {
@@ -82,6 +83,33 @@ angular.module('descentManagerApp')
   				console.log('Error recuperando las aventuras de la partida: ' + error);
   			});
   	};
+
+    // Cambia el estado de las aventuras de la partida
+    $scope.changeState = function(aventura) {
+      if (aventura.activa == false && aventura.ganada == null) {
+        aventura.activa = true;
+        aventura.ganada = null;
+      } else if (aventura.activa == true) {
+        aventura.activa = false;
+        aventura.ganada = true;
+      } else if (aventura.ganada == true) {
+        aventura.activa = false;
+        aventura.ganada = false;
+      } else if (aventura.ganada == false) {
+        aventura.activa = false;
+        aventura.ganada = null;
+      }
+
+      // Se actualiza en base de datos
+      Alert.showLoader();
+      Adventure.updateAdventures($scope.partida_id, aventura)
+          .then(function(response) {
+            Alert.hideLoader();
+          }, function(error) {
+            Alert.hideLoader();
+            console.log('Error al actualizar las aventuras de la partida: ' + error);
+          });
+    };
 
   	$scope.init();
   });

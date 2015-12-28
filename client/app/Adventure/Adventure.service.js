@@ -15,6 +15,13 @@ angular.module('descentManagerApp')
                   method: 'GET',
                   url: '/api/adventures/game/' + gameId
               });
+      },
+      updateAdventures: function (gameId, adventure) {
+        return $http({
+                  method: 'POST',
+                  url: '/api/adventures/game/' + gameId,
+                  data: adventure
+              });
       }
     };
   });

@@ -28,3 +28,9 @@
 	text-align: center;
 	background-color: hsl(0, 100%, 75%);
 }
+
+.actBorderActive {
+	border: ridge;
+	text-align: center;
+	background-color: hsl(240, 100%, 75%);
+}

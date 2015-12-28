@@ -2,8 +2,29 @@
 	border-top: ridge;
 	border-right: ridge;
 	border-left: ridge;
+	text-align: center;
+}
+
+.actBorderNoTop {
+	border-bottom: ridge;
+	border-right: ridge;
+	border-left: ridge;
+	text-align: center;
 }
 
 .actBorder {
 	border: ridge;
+	text-align: center;
+}
+
+.actBorderPlayersWin {
+	border: ridge;
+	text-align: center;
+	background-color: hsl(120, 100%, 50%);
+}
+
+.actBorderPlayersLose {
+	border: ridge;
+	text-align: center;
+	background-color: hsl(0, 100%, 75%);
 }

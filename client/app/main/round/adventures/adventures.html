@@ -2,32 +2,27 @@
 	
     	<h2 class="form-signin-heading">{{ 'ADVENTURES' | translate }}</h2>
 
-    	<div class="row actBorderNoBottom">
-		  	<div class="col-md-1 actBorderNoBottom">.col-md-1</div>
-			<div class="col-md-1 actBorderNoBottom">.col-md-1</div>
-		  	<div class="col-md-1 actBorderNoBottom">.col-md-1</div>
-		  	<div class="col-md-1 actBorderNoBottom">.col-md-1</div>
-		  	<div class="col-md-1 actBorderNoBottom">.col-md-1</div>
-		  	<div class="col-md-1 actBorderNoBottom">.col-md-1</div>
-		  	<div class="col-md-1 actBorderNoBottom">.col-md-1</div>
-		  	<div class="col-md-1 actBorderNoBottom">.col-md-1</div>
-		  	<div class="col-md-1 actBorderNoBottom">.col-md-1</div>
-		  	<div class="col-md-1 actBorderNoBottom">.col-md-1</div>
-		  	<div class="col-md-1 actBorderNoBottom">.col-md-1</div>
-		  	<div class="col-md-1 actBorderNoBottom">.col-md-1</div>
-		</div>
-		<div class="row actBorderNoBottom">
-		  	<div class="col-md-8 ">.col-md-8</div>
-		  	<div class="col-md-4 ">.col-md-4</div>
-		</div>
-		<div class="row actBorderNoBottom">
-		  	<div class="col-md-4 ">.col-md-4</div>
-		  	<div class="col-md-4 ">.col-md-4</div>
-		  	<div class="col-md-4 ">.col-md-4</div>
-		</div>
-		<div class="row actBorder">
-		  	<div class="col-md-6 ">.col-md-6</div>
-		  	<div class="col-md-6 ">.col-md-6</div>
-		</div>
- 
+    	<div ng-class="{'row actBorder': 		 rama.acto.indexOf('Intro') > -1,
+    					'row actBorderNoBottom': rama.acto.indexOf('1') > -1,
+    					'row actBorderNoTop':    rama.acto.indexOf('2') > -1}" ng-repeat="rama in arbol">
+ 			<div class="col-md-2 actBorder">{{rama.acto}}</div>
+ 			<div ng-class="{'col-md-10 actBorder':  		  rama.aventuras[0].ganada == null,
+ 							'col-md-10 actBorderPlayersWin':  rama.aventuras[0].ganada == true,
+ 							'col-md-10 actBorderPlayersLose': rama.aventuras[0].ganada == false}"
+ 				 ng-if="rama.aventuras.length == 1">
+ 				{{rama.aventuras[0].titulo}}
+ 			</div>
+ 			<div ng-class="{'col-md-5 actBorder':  		  	 rama.aventuras[0].ganada == null,
+ 							'col-md-5 actBorderPlayersWin':  rama.aventuras[0].ganada == true,
+ 							'col-md-5 actBorderPlayersLose': rama.aventuras[0].ganada == false}"
+ 				 ng-if="rama.aventuras.length > 1">
+ 				{{rama.aventuras[0].titulo}}
+ 			</div>
+ 			<div ng-class="{'col-md-5 actBorder':	    	 rama.aventuras[1].ganada == null,
+ 							'col-md-5 actBorderPlayersWin':  rama.aventuras[1].ganada == true,
+ 							'col-md-5 actBorderPlayersLose': rama.aventuras[1].ganada == false}"
+ 				 ng-if="rama.aventuras.length > 1">
+ 				{{rama.aventuras[1].titulo}}
+ 			</div>
+ 		</div>
 </div>

@@ -10,7 +10,7 @@ var AventuraPartida = sqldb.AventuraPartida;
 
 // Gets a list of Adventuras
 export function index(req, res) {
-  Aventura.findAll()
+  Aventura.findAll({ order: 'id asc' })
     .then(function(aventuras) {
       res.json(aventuras);
     }, function(error){
@@ -22,7 +22,7 @@ export function index(req, res) {
 // Get adventures from a game
 export function getGameAdventures(req, res) {
 	AventuraPartida.findAll({ where: {partida_id : req.params.id},
-                            order: 'id asc' })
+                            order: 'aventura_id asc' })
 		.then(function(aventuraPartida) {
 			res.status(200).json(aventuraPartida);
 		}, function(error) {

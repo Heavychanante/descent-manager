@@ -9,7 +9,7 @@ var Aventura 		= sqldb.Aventura;
 var AventuraPartida = sqldb.AventuraPartida;
 
 // Gets a list of Adventuras
-export function index(req, res) {
+export.index = function(req, res) {
   Aventura.findAll({ order: 'id asc' })
     .then(function(aventuras) {
       res.json(aventuras);
@@ -20,7 +20,7 @@ export function index(req, res) {
 }
 
 // Get adventures from a game
-export function getGameAdventures(req, res) {
+export.getGameAdventures = function(req, res) {
 	AventuraPartida.findAll({ where: {partida_id : req.params.id},
                             order: 'aventura_id asc' })
 		.then(function(aventuraPartida) {
@@ -32,7 +32,7 @@ export function getGameAdventures(req, res) {
 }
 
 // Update a game adventures
-export function updateAdventures(req, res) {
+export.updateAdventures = function(req, res) {
   var gameId    = req.params.id;
   var adventure = req.body;
 

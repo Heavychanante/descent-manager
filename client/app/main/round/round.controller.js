@@ -7,4 +7,19 @@ angular.module('descentManagerApp')
 
     // Por defecto muestra la información de los jugadores
     $state.go('main.round.players', {game_id: $scope.game_id});
+
+	// Clases de los enlaces
+	$scope.initClasses = function() {
+		$scope.playersClass = '';
+ 		$scope.actsClass = '';
+	};
+
+ 	// Cambia la clase del enlace correspondiente
+ 	$scope.setActive = function(link) {
+ 		$scope.initClasses();
+ 		$scope[link + 'Class'] = 'active';
+ 	};
+
+ 	$scope.initClasses();
+ 	$scope.playersClass = 'active';
   });

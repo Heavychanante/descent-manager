@@ -1,0 +1,31 @@
+<div class="container-fluid main">
+	
+    	<h2 class="form-signin-heading">{{ 'ADVENTURES' | translate }}</h2>
+
+    	<div ng-class="{'row actBorder': 		 rama.acto.indexOf('Intro') > -1,
+    					'row actBorderNoBottom': rama.acto.indexOf('1') > -1,
+    					'row actBorderNoTop':    rama.acto.indexOf('2') > -1}" ng-repeat="rama in arbol">
+ 			<div class="col-md-2 actBorder">{{rama.acto}}</div>
+ 			<div ng-class="{'col-md-10 actBorder':  		  rama.aventuras[0].ganada == null && rama.aventuras[0].activa == false,
+ 							'col-md-10 actBorderActive': 	  rama.aventuras[0].activa == true,
+ 							'col-md-10 actBorderPlayersWin':  rama.aventuras[0].ganada == true,
+ 							'col-md-10 actBorderPlayersLose': rama.aventuras[0].ganada == false}"
+ 				 ng-if="rama.aventuras.length == 1" ng-click="changeState(rama.aventuras[0])">
+ 				{{rama.aventuras[0].titulo}}
+ 			</div>
+ 			<div ng-class="{'col-md-5 actBorder':  		  	 rama.aventuras[0].ganada == null && rama.aventuras[0].activa == false,
+ 							'col-md-5 actBorderActive': 	 rama.aventuras[0].activa == true,
+ 							'col-md-5 actBorderPlayersWin':  rama.aventuras[0].ganada == true,
+ 							'col-md-5 actBorderPlayersLose': rama.aventuras[0].ganada == false}"
+ 				 ng-if="rama.aventuras.length > 1" ng-click="changeState(rama.aventuras[0])">
+ 				{{rama.aventuras[0].titulo}}
+ 			</div>
+ 			<div ng-class="{'col-md-5 actBorder':	    	 rama.aventuras[1].ganada == null && rama.aventuras[1].activa == false,
+ 							'col-md-5 actBorderActive': 	 rama.aventuras[1].activa == true,
+ 							'col-md-5 actBorderPlayersWin':  rama.aventuras[1].ganada == true,
+ 							'col-md-5 actBorderPlayersLose': rama.aventuras[1].ganada == false}"
+ 				 ng-if="rama.aventuras.length > 1" ng-click="changeState(rama.aventuras[1])">
+ 				{{rama.aventuras[1].titulo}}
+ 			</div>
+ 		</div>
+</div>

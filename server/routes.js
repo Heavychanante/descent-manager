@@ -12,9 +12,10 @@ var path = require('path');
 module.exports = function(app, passport) {
 
   // Authenticate REST api
-  app.use('/api/*', auth.auth);
+  //app.use('/api/*', auth.auth);
 
   // Insert routes below
+  app.use('/api/adventures', require('./api/adventure'));
   app.use('/api/games', require('./api/game'));
   app.use('/api/characters', require('./api/character'));
   app.use('/api/classes', require('./api/class'));

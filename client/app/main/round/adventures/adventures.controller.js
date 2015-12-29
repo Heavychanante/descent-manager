@@ -104,6 +104,7 @@ angular.module('descentManagerApp')
       Alert.showLoader();
       Adventure.updateAdventures($scope.partida_id, aventura)
           .then(function(response) {
+            $scope.init();
             Alert.hideLoader();
           }, function(error) {
             Alert.hideLoader();

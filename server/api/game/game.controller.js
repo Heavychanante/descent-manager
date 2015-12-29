@@ -29,9 +29,7 @@ exports.createGame = function(req, res) {
   var gameName    = req.body.name;
   var gameUser    = req.body.user;
   var gamePlayers = req.body.players;
-  console.log(gameName);
-  console.log(gameUser);
-  console.log(gamePlayers);
+
   // Primero se crea la partida
   Partida.create({
     nombre: gameName,
